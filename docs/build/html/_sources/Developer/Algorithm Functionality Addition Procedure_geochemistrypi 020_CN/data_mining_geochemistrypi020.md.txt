@@ -1,0 +1,34 @@
+# Data-mining v0.2.0
+===
+## 1. 项目简介
+打开geochemistrypi本地仓库以后，可以看到有几个子文件夹，分别对应右图。正式开始添加算法前，最好能多运行几次根目录下的    `start_cli_pipeline.py`    文件，把整个实验流程过一遍，对于很多内在原理会有更好的理解。
+
+![Alt text](image.png)
+
+
+## 2. 数据挖掘（data_mining）
+主目录下的全局变量与内置测试数据。
+## ![Alt text](image-1.png)
+数据挖掘主要分为四大类：回归、分类、聚类、降维。
+
+**回归**是一种有监督学习方法，它通过学习样本数据集合中的回归函数（regression function），来构建一个回归模型，然后用这个模型对新样本进行预测。
+
+**分类**是一种有监督学习方法，它通过学习样本数据集合中的类别信息，来构建一个分类器，然后用这个模型对新样本进行分类。
+
+**聚类**是按照某个特定标准把一个数据集分割成不同的类或簇，使得同一个簇内的数据对象的相似性尽可能大，同时不在同一个簇中的数据对象的差异性也尽可能地大。
+
+**降维**是一种无监督学习方法，基于数据的内在结构。在高维空间中,数据点之间往往存在一些隐藏的规律和关系。降维算法的目标就是通过找到这些规律和关系,将高维数据点映射到低维空间中,从而达到简化数据的目的。
+
+
+
+## 3. 为支持向量机分类算法添加功能（data_mining）
+算法的启动
+![Alt text](image-7.png)
+![Alt text](image-6.png)
+### 3.1 在`model/func/algo_classification/_svm.py`文件中**添加**`plot_2d_decision_boundary`功能.
+![Alt text](image-8.png)
+
+### 3.2 在`model/classification.py/class SVMClassification:`文件中**调用**`plot_2d_decision_boundary`功能.
+![Alt text](image-10.png)
+![Alt text](image-11.png)
+

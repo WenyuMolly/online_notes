@@ -1,0 +1,372 @@
+<!doctype html>
+<html class="no-js" lang="EN">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Developer Manual" href="Developer%20Guide/Developer%20Manual.html" /><link rel="prev" title="A Completed Pull Request" href="Git.html" />
+
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+        <title>Docker Deployment - Wenyu&#39;s Online Notes documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: blue;
+  --color-admonition-background: orange;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     <em>More tutorial videos can be found on bilibili: ZJU_Earth_Data</em> 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Wenyu's Online Notes  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://user-images.githubusercontent.com/66779478/253803187-8a139235-0093-42a9-8b01-426a246e6916.png" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">AutoWare Universe</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AutoWare%20Universe/Perception.html">Perception</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Example</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Model%20Example/Data_Preprocessing/Data%20Preprocessing.html">Data Cleaning &amp; Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Model%20Example/Clustering/Clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Model%20Example/Classification/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Model%20Example/Decomposition/decomposition.html">Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Model%20Example/Regression/Regression.html">Regression</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contact Us</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Contact%20us/bug_template.html">Bug Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contact%20us/Q%26A.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contact%20us/Join%20us.html">Join Us :)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Documents' link</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Docs%20link.html"><strong>1. Geochemistry π Project Introduction</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Docs%20link.html#code-download-link"><strong>2. Code Download Link</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Docs%20link.html#installing-and-model-running-video"><strong>3. Installing and Model Running Video</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Docs%20link.html#installing-and-model-running-docs"><strong>4. Installing and Model Running Docs</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Docs%20link.html#users-feedback-doc"><strong>5. Users Feedback Doc</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Contributing/Code%20Conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contributing/Contributor.html">Contributors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Guide.html">Table of Contents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Deployment.html">Local Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git.html">A Completed Pull Request</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Docker Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html">Developer Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html#installation-a-name-installation-a">1. Installation <span class="raw-html-m2r"><a name="installation"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html#example-a-name-example-a">2. Example<span class="raw-html-m2r"><a name="example"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html#data-format-a-name-data-a">3. Data Format<span class="raw-html-m2r"><a name="data"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html#use-a-name-use-a">4. Use<span class="raw-html-m2r"><a name="use"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html#bug-report-a-name-bug-a">5. Bug Report<span class="raw-html-m2r"><a name="bug"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html#advice-a-name-advice-a">6. Advice<span class="raw-html-m2r"><a name="advice"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Algorithm%20Functionality%20Addition%20Procedure_geochemistrypi%20020_CN/data_mining_geochemistrypi020.html">Data-mining v0.2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Docs%20link.html">Developers Documents Link</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python_apis/api.html">data_readiness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_apis/api.html#feature-engineering">feature_engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_apis/api.html#data-imputation">data.imputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_apis/api.html#data-preprocessing">data.preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_apis/api.html#data-statistic">data.statistic</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="docker-deployment">
+<h1>Docker Deployment<a class="headerlink" href="#docker-deployment" title="Permalink to this heading">#</a></h1>
+<p>Takeaway</p>
+<ul class="simple">
+<li><p>Docker in the command line</p></li>
+<li><p>Docker in desktop GUI</p></li>
+<li><p>Dockerfile -&gt; Docker Image -&gt; Docker Container</p></li>
+</ul>
+<ol class="arabic">
+<li><p>Search how to download <strong>Docker</strong> in your computer. Meanwhile, you will get a command line tool called <strong>docker</strong>. Use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">--version</span></code> to check whether it exists on VSCode console.</p>
+<p><span class="raw-html-m2r"><img  alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/d5e2bb8b-9634-40bc-84b1-36aa0977763e"></span></p>
+</li>
+<li><p>Navigate to the directory where <strong>Dockerfile</strong> stays. <strong>Dockerfile</strong> has been set up and tested already so you don’t need to set it manually.</p>
+<p><span class="raw-html-m2r"><img alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/f0be0607-5ab9-489b-8f43-5657b25f0d28"></span></p>
+</li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span></code> to make a docker image. The command is might different on Windows. No worries, just search it on the internet. In the command below, <code class="docutils literal notranslate"><span class="pre">geopi</span></code> is the name of the docker image while <code class="docutils literal notranslate"><span class="pre">test</span></code> is the tag of  the docker image. For the first time to execute the command, it needs longer time than that of mine shown below and looks slightly different. Sometimes, It would fail because the stability of the network. If it fails, just rerun the command until it works.</p>
+<p><span class="raw-html-m2r"><img width="990" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/724ead8b-1006-4e3d-bef2-8a5ec9c95f12"></span></p>
+</li>
+<li><p>Open <strong>Docker Desktop</strong>. Now, in <strong>Images</strong> section, the created docker image is in the list.</p>
+<p><span class="raw-html-m2r"><img width="1339" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/c6e771d1-c912-495f-98b5-41d325e77060"></span></p>
+<p>Click the <strong>run</strong> button as shown above to configure the docker image when you want to initialize the corresponding docker container. Then, you simple input the container name and host ports as shown below, click <strong>run</strong> and wait until it finishes.</p>
+<p><span class="raw-html-m2r"><img width="1341" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/22079af1-3868-4ab1-8e43-af6c76c9c5db"></span></p>
+</li>
+<li><p>Navigate to <strong>Containers</strong> section, you would see the corresponding docker container <code class="docutils literal notranslate"><span class="pre">geopi-testing</span></code> is activated.</p>
+<p><span class="raw-html-m2r"><img width="1339" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/1a4f4ad8-7391-46d3-af99-e49790afcd47"></span></p>
+<p>Now, you can click the running container, and navigate to its terminal. Use <code class="docutils literal notranslate"><span class="pre">ls</span></code> to check whether the code is inside or not.</p>
+<p><span class="raw-html-m2r"><img width="1337" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/1b4c91f0-f6d5-471e-a748-3cb5d754f088"></span></p>
+</li>
+<li><p>The difference between <strong>Local Deployment</strong> and <strong>Docker Deployment</strong> is that we have set up the commands to download related dependencies for you. Hence, you can test CLI version, frontend and backend server directly. For more manual download detail, please refer to <strong>Local Deployment</strong>.</p>
+<ol class="arabic simple">
+<li><p><strong>CLI version</strong>: Use the command <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">start_cli_pipeline.py</span></code> to test our command-line-interface (CLI) software.</p></li>
+</ol>
+<p><span class="raw-html-m2r"><img width="1338" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/95442d43-37ca-43f7-b792-3b6348eb0600"></span></p>
+<ol class="arabic simple" start="2">
+<li><p><strong>Backend server</strong>: Launch the backend server as well by using <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">start_dash_pipeline.py</span></code>.</p></li>
+</ol>
+<p><span class="raw-html-m2r"><img width="1341" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/d8765208-ff69-4b90-902e-a18e6de264be"></span></p>
+<p>Until now, you can copy the address <strong>http://0.0.0.0:8000</strong> shown in the above picture and open it in the browser.</p>
+<p><span class="raw-html-m2r"><img width="1178" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/e6378cb3-0e20-453e-b0ad-ae9f03f5210d"></span></p>
+<p>This indicates that the backend server works normally.</p>
+<p>Besides, you can append the suffix <strong>/docs</strong> to the backend server address <strong>http://0.0.0.0:8000</strong> to make <strong>http://0.0.0.0:8000/docs</strong>. Then use this address to open our API interface in the browser.</p>
+<p><span class="raw-html-m2r"><img width="1177" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/3246c3a5-0377-48a1-9abc-8d7834155a6e"></span></p>
+<ol class="arabic simple" start="3">
+<li><p><strong>Frontend server</strong>:  This time, we need to open a external terminal by clicking in <strong>Docker Desktop</strong>. Because, we use frontend and backend seperation mode to construct our web portal. To utilize the functionality in the web page, you need to activate frontend and backend servers simultaneously.</p></li>
+</ol>
+<p><span class="raw-html-m2r"><img width="1311" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/965abf04-61fe-469f-9ac6-1bbf352bd955"></span></p>
+<p><span class="raw-html-m2r"><img width="738" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/346b56d5-7082-46f2-8abc-69b2af74d26e"></span></p>
+<p>Now Navigate to the directory <strong>frontend</strong>, use <code class="docutils literal notranslate"><span class="pre">yarn</span> <span class="pre">start</span></code> to activate the frontend server.</p>
+<p><span class="raw-html-m2r"><img width="899" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/3094858e-d91c-47d1-9ac5-07aa955dd553"></span></p>
+<p>you can copy the address <strong>http://localhost:3001/</strong> shown in the above picture and open it in the browser. And then navigate to the registration page to register firstly.</p>
+<p><span class="raw-html-m2r"><img width="1174" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/ecb76c89-fb42-4935-8467-beb74f03b69f"></span></p>
+<p>After registeration, you can enter the home page. Hooray!</p>
+<p><span class="raw-html-m2r"><img width="1174" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/fe522246-7f44-4b63-bc22-781be79e5b14"></span></p>
+</li>
+</ol>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="Developer%20Guide/Developer%20Manual.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Developer Manual</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="Git.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">A Completed Pull Request</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Wenyu
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
+</html>

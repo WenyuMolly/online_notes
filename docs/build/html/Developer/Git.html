@@ -1,0 +1,438 @@
+<!doctype html>
+<html class="no-js" lang="EN">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Docker Deployment" href="Docker%20Deployment.html" /><link rel="prev" title="Local Deployment" href="Deployment.html" />
+
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+        <title>A Completed Pull Request - Wenyu&#39;s Online Notes documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: blue;
+  --color-admonition-background: orange;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     <em>More tutorial videos can be found on bilibili: ZJU_Earth_Data</em> 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Wenyu's Online Notes  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://user-images.githubusercontent.com/66779478/253803187-8a139235-0093-42a9-8b01-426a246e6916.png" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">AutoWare Universe</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AutoWare%20Universe/Perception.html">Perception</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Example</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Model%20Example/Data_Preprocessing/Data%20Preprocessing.html">Data Cleaning &amp; Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Model%20Example/Clustering/Clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Model%20Example/Classification/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Model%20Example/Decomposition/decomposition.html">Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Model%20Example/Regression/Regression.html">Regression</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contact Us</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Contact%20us/bug_template.html">Bug Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contact%20us/Q%26A.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contact%20us/Join%20us.html">Join Us :)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Documents' link</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Docs%20link.html"><strong>1. Geochemistry π Project Introduction</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Docs%20link.html#code-download-link"><strong>2. Code Download Link</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Docs%20link.html#installing-and-model-running-video"><strong>3. Installing and Model Running Video</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Docs%20link.html#installing-and-model-running-docs"><strong>4. Installing and Model Running Docs</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Docs%20link.html#users-feedback-doc"><strong>5. Users Feedback Doc</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Contributing/Code%20Conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contributing/Contributor.html">Contributors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Guide.html">Table of Contents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Deployment.html">Local Deployment</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">A Completed Pull Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Docker%20Deployment.html">Docker Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html">Developer Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html#installation-a-name-installation-a">1. Installation <span class="raw-html-m2r"><a name="installation"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html#example-a-name-example-a">2. Example<span class="raw-html-m2r"><a name="example"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html#data-format-a-name-data-a">3. Data Format<span class="raw-html-m2r"><a name="data"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html#use-a-name-use-a">4. Use<span class="raw-html-m2r"><a name="use"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html#bug-report-a-name-bug-a">5. Bug Report<span class="raw-html-m2r"><a name="bug"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Guide/Developer%20Manual.html#advice-a-name-advice-a">6. Advice<span class="raw-html-m2r"><a name="advice"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Algorithm%20Functionality%20Addition%20Procedure_geochemistrypi%20020_CN/data_mining_geochemistrypi020.html">Data-mining v0.2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developer%20Docs%20link.html">Developers Documents Link</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python_apis/api.html">data_readiness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_apis/api.html#feature-engineering">feature_engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_apis/api.html#data-imputation">data.imputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_apis/api.html#data-preprocessing">data.preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_apis/api.html#data-statistic">data.statistic</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="a-completed-pull-request">
+<h1>A Completed Pull Request<a class="headerlink" href="#a-completed-pull-request" title="Permalink to this heading">#</a></h1>
+<p>Takeaway:</p>
+<ul class="simple">
+<li><p>Virtual Environment</p></li>
+<li><p>Branch Operation</p></li>
+<li><p>Continuous Integration</p></li>
+</ul>
+<ol class="arabic">
+<li><p>Search how to download <strong>git</strong> as a command line tool in your computer.</p></li>
+<li><p>Find the codebase url through the green button on our GitHub repository.</p>
+<blockquote>
+<div><p><span class="raw-html-m2r"><img width="1174" alt="image" src="https://user-images.githubusercontent.com/47497750/236991014-7c17248c-54cc-41f0-af15-796a67de5307.png"></span></p>
+</div></blockquote>
+</li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">&lt;url&gt;</span></code> to clone the remote codebase into your local machine through the command line. No worry if your shell (command line) looks different from mine.</p>
+<blockquote>
+<div><p><span class="raw-html-m2r"><img width="920" alt="image" src="https://user-images.githubusercontent.com/47497750/236991322-843c9497-3c32-42d0-a564-1979e093a8d1.png"></span></p>
+</div></blockquote>
+</li>
+<li><p>Switch into <strong>geochemistrypi</strong> repository. Activate your virtual environment (<strong>venv</strong> or <strong>conda</strong>). In this case, I use conda to set up.  It is a good habit to use a specific virtual environment for a specific Python project. Then, use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code> to download the dependencies.</p>
+<blockquote>
+<div><p><span class="raw-html-m2r"><img width="921" alt="image" src="https://user-images.githubusercontent.com/47497750/237021355-0fff7b74-ebd8-47f6-8c76-8918b11fc8ec.png"></span></p>
+</div></blockquote>
+</li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">install</span></code> to set up the git hook scripts, which will be used later on, no need to worry! You only need to run this  command once in this local repository unless you clone another one again in other local directory.</p>
+<blockquote>
+<div><p><span class="raw-html-m2r"><img width="920" alt="image" src="https://user-images.githubusercontent.com/47497750/237022518-7e0dfa23-7b49-46f3-adf2-ec1f83651f44.png"></span></p>
+</div></blockquote>
+</li>
+<li><p>Use <strong>Visual Studio Code</strong> (Recommended IDE) to open the codebase and don’t forget to activate your virtual environment as the picture shows below.</p>
+<blockquote>
+<div><p><span class="raw-html-m2r"><img width="1439" alt="image" src="https://user-images.githubusercontent.com/47497750/237025973-aa9792a3-dbfa-41f3-8adf-3d5824146ddf.png"></span></p>
+</div></blockquote>
+</li>
+<li><p>Create a new git branch to develop on your own path. You can name the branch name as your identification or as the function you are going to build up.</p>
+<blockquote>
+<div><p><span class="raw-html-m2r"><img width="1219" alt="image" src="https://user-images.githubusercontent.com/47497750/237028303-e3edf748-2f76-40a3-8247-3869656dfc88.png"></span></p>
+</div></blockquote>
+</li>
+<li><p>Do some modifications on the codebase. For example, in this case, I update the badge information of READM.md.</p>
+<blockquote>
+<div><p><span class="raw-html-m2r"><img width="1433" alt="image" src="https://user-images.githubusercontent.com/47497750/237028688-82e628f8-eaac-4cf2-a3a4-c2eb51a85cd8.png"></span></p>
+</div></blockquote>
+</li>
+<li><p>After finishing modifications on the codebase, you need to use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> to check what file has been modified.</p>
+<blockquote>
+<div><p><span class="raw-html-m2r"><img width="1438" alt="image" src="https://user-images.githubusercontent.com/47497750/237053725-303b6c15-5939-441e-8bee-2d322c2e8019.png"></span></p>
+</div></blockquote>
+</li>
+<li><p>It is a good habit to use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">&lt;filename&gt;</span></code> check whether the changed content on that specific files respectively is what you desire to make. After enter the command, the console will switch into <strong>diff display</strong>. In  <strong>diff displays</strong> , press the keybord <code class="docutils literal notranslate"><span class="pre">j</span></code> to scroll down and press the keyboard <code class="docutils literal notranslate"><span class="pre">k</span></code>  to scroll up. <code class="docutils literal notranslate"><span class="pre">+</span></code> refers to the line added while <code class="docutils literal notranslate"><span class="pre">-</span></code> refers to the line deleted. Press the keyboard <code class="docutils literal notranslate"><span class="pre">q</span></code> to exit from the <strong>diff display</strong> after checking.</p>
+<p><span class="raw-html-m2r"><img width="1200" alt="image" src="https://user-images.githubusercontent.com/47497750/237054080-39198eac-e804-41db-b672-aece0417fe38.png"></span></p>
+<p><span class="raw-html-m2r"><img width="1274" alt="image" src="https://user-images.githubusercontent.com/47497750/237013451-f7bd73f8-6b3f-4781-8954-5aaf1e171f1f.png"></span></p>
+</li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;filename&gt;</span></code> to staged the files for commit.</p>
+<p><span class="raw-html-m2r"><img width="1202" alt="image" src="https://user-images.githubusercontent.com/47497750/237054509-e8418115-23c3-49c7-8690-51dc31d2aed1.png"></span></p>
+</li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;tag:</span> <span class="pre">message&quot;</span></code> to make a local commit. It is a good habit to follow up the principle that one commit for one functionality implementation or one optimization or one bug fix. It is allowed to push multiple commits to the remote codebase with one pull request.</p>
+<p>Please include the following tags in the beginning of your commit message to make more organized commits and PRs. It would tell exactly what use it is in this commit.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">feat</span></code>: a new feature is introduced with the changes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fix</span></code>: a bug fix has occurred</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">perf</span></code>: an existing feature improved</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs</span></code>: changes to the documentation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">style</span></code>: code formatting</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">refactor</span></code>: refactoring production code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">revert</span></code>:  version revertion</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chore</span></code>: the change of developing tools or assisted tool</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test</span></code>: adding missing tests, refactoring tests</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build</span></code>: package the codebase</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ci</span></code>: continue integration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BREAKING</span> <span class="pre">CHANGE</span></code>: a breaking API change</p></li>
+</ul>
+<p><span class="raw-html-m2r"><img width="1204" alt="image" src="https://user-images.githubusercontent.com/47497750/237055438-38e60ffc-a54d-4a25-82d3-d5e8b33357d6.png"></span></p>
+</li>
+<li><p>Continuous Integration (CI): In our codebase, we set up a pre-commit locally before.  Normally, it will automatically check code grammar and correct code styles for your commited code.</p>
+<ol class="arabic simple">
+<li><p>In this <strong>successful case</strong>, it indicates that everything works well. No code grammar mistake and code style conforms to the configuration. Hence, no need to do further, you can push the local commit to remote codebase in the GitHub.</p></li>
+</ol>
+<p><span class="raw-html-m2r"><img width="1202" alt="image" src="https://user-images.githubusercontent.com/47497750/237055329-cb3935b8-44d7-4205-87f3-4ae4dbcbeca6.png"></span></p>
+<ol class="arabic simple" start="2">
+<li><p>In another <strong>failed case</strong> (I did another experiment before, not in this docs!), it indicates that there are three files where import statements don’t conform to the specification. Hence, it corrects them for you, which means that you don’t need to manually correct them by yourself.</p></li>
+</ol>
+<p><span class="raw-html-m2r"><img width="1160" alt="Pasted Graphic 9" src="https://user-images.githubusercontent.com/47497750/237057185-f43b9867-7f42-4505-a90e-0c954923a1da.png"></span></p>
+<p>The next step is to use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>  and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> to check the details in the corrected files to see what CI tool has done for you.</p>
+<p><span class="raw-html-m2r"><img width="627" alt="Pasted Graphic 13" src="https://user-images.githubusercontent.com/47497750/237058359-6616e9aa-ad44-488f-bfea-b290a6c8cb08.png"></span></p>
+<p><span class="raw-html-m2r"><img width="576" alt="Pasted Graphic 14" src="https://user-images.githubusercontent.com/47497750/237058693-95e9b454-92be-4e47-a7ab-9031c7645849.png"></span></p>
+<p>You would see that you need to use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> again. Because CI tool has modified your code , you need to do a standard git commit process again.</p>
+<p><span class="raw-html-m2r"><img width="800" alt="Pasted Graphic 16" src="https://user-images.githubusercontent.com/47497750/237059215-08ef553a-be5e-46bf-9c5c-e76342773d8b.png"></span></p>
+<p>Again, you need to run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> again. Just use the previous same command. Now, it passes! Fancy is it? Until now, you are allowed to push the local commit to remote codebase in the GitHub.</p>
+<p><span class="raw-html-m2r"><img width="1109" alt="Pasted Graphic 17" src="https://user-images.githubusercontent.com/47497750/237059295-42b855e9-f70a-4894-8e34-0b406e1d9f53.png"></span></p>
+</li>
+<li><p>Back to the <strong>successful case</strong>. Now, it is time to push your local  <strong>dev/Sany</strong>  branch to the remote  <strong>dev/Sany</strong> branch. It may not created yet, but no worried, it will be shown later. Firstly, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">main</span> <span class="pre">--rebase</span></code>. This command pulls the latest changes from the remote <strong>main</strong> branch and applies them to your local <strong>dev/Sany</strong> branch, while also rebasing your local changes on top of the new changes from the remote.</p>
+<ol class="arabic simple">
+<li><p><strong>No conflict case</strong>: In this example, it indicates that there is no conflict with the remote <strong>main</strong> branch. Quite normally, sometimes, when you are coding in your own branch, the remote <strong>main</strong> branch is far ahead of yours. It is likely that there are conflicts existing so you need to resolve the conflicts before merge your remote <strong>dev/Sany</strong> branch into remote <strong>main</strong> branch.</p></li>
+</ol>
+<p>The way through <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">main</span> <span class="pre">--rebase</span></code> can save you troubles. If there are any conflicts between your local  <strong>dev/Sany</strong> changes and the remote <strong>main</strong> branch’s changes, Git will stop the rebase process and alert you that there are conflicts that need to be resolved. In this case, there is no conflict at all.</p>
+<p><span class="raw-html-m2r"><img width="1200" alt="image" src="https://user-images.githubusercontent.com/47497750/237062092-0a922f60-4485-4343-93ca-89ed8902acd6.png"></span></p>
+<p>If in your own case, there are some conflicts, to resolve the conflicts, you will need to edit the affected files manually on VSCode IDE to resolve the differences between the conflicting changes. Once you have made the necessary changes, you can stage the changes using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>, and then use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span> <span class="pre">--continue</span></code> to continue the rebase process.</p>
+<p>Git will then apply your local changes on top of the new changes from the remote, incorporating the changes you made to resolve the conflicts. It’s worth noting that resolving conflicts can sometimes be a complex process, especially when there are multiple conflicts across several files. If you’re not familiar with resolving conflicts in Git, it’s a good idea to read up on it first or seek help from experienced Git users (Sany or others) to avoid any unintended consequences.</p>
+<p>The picture below is the successful case without conflicts.</p>
+<p><span class="raw-html-m2r"><img width="1217" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/ae7de931-dc30-45d5-a29a-0389152075c7"></span></p>
+<p>After resolving all conflicts, you can then use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">dev/Sany:dev/Sany</span></code> to push your local changes to the remote repository. This command pushes your local <strong>dev/Sany</strong> branch to the remote repository and creates a new remote <strong>dev/Sany</strong> branch if it does not exist yet. The colon (<code class="docutils literal notranslate"><span class="pre">:</span></code>) separates the local branch name from the remote branch name.</p>
+<p><span class="raw-html-m2r"><img width="1222" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/3ba452c0-c93a-430c-9652-810babd00236"></span></p>
+<p>（2）<strong>Unstaged changes case</strong>: In this example, it indicates that some files, which are modified and tracked by git, haven’t been commited yet. Probably, these files are not the ones you want to push because they are under development. In Git’s protection mechanism, when there is some tracked and modified files in your working directory, you are not allowed to pull and merge the remote branch <strong>main</strong> into your local branch. However, if your working directory only includes untracked files, this problem like the picture shown below wouldn’ t happend.</p>
+<p><span class="raw-html-m2r"><img width="947" alt="Pasted Graphic 8" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/387b4870-f5b1-4d4d-9865-4564c3b8e5c3"></span></p>
+<p>Fortunately, you can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">push</span></code> to save those changed files into a hidden zone temporarily without committing them.</p>
+<p><span class="raw-html-m2r"><img width="1012" alt="Pasted Graphic 3" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/00c628b6-a453-490c-af77-c37929b65a13"></span></p>
+<p>Now, you can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">main</span> <span class="pre">--rebase</span></code> and follow the same procedure as in the <strong>no conflict case</strong>.</p>
+<p><span class="raw-html-m2r"><img width="1005" alt="Pasted Graphic 7" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/82a5fb49-022f-43f9-89b8-862c237de2ba"></span></p>
+<p><span class="raw-html-m2r"><img width="816" alt="Pasted Graphic 5" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/c286eb02-91e4-4927-8b69-981b6aa7a902"></span></p>
+<p>Once you finish pushing, you can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">pop</span></code> to bring back the modified files into your working directory. For more information about <strong>git stash</strong> , plz google it.</p>
+<p><span class="raw-html-m2r"><img width="816" alt="Pasted Graphic 6" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/6472df94-8d65-45aa-b787-1848966fe90d"></span></p>
+</li>
+<li><p>Now, it is time to creat your first <strong>PULL REQUEST</strong>. Wowww, what a long journey! Copy the url with underline <a class="reference external" href="https://github.com/ZJUEarthData/geochemistrypi/pull/new/dev/Sany">https://github.com/ZJUEarthData/geochemistrypi/pull/new/dev/Sany</a> (it is different in your case, check your own information) and open it with a browser. You would the page directing you to create a <strong>pull request</strong> through clicking the green button. It is done!!! Then, no need to operate anymore . As a normal developer, you are not allowed to merge by yourself. Our maintainers will check and merge later on if it is good.</p>
+<p><span class="raw-html-m2r"><img width="1041" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/7cd4a746-2b78-4861-a76d-758c7ab9e21a"></span></p>
+<p><span class="raw-html-m2r"><img width="1193" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/d9ea1bf1-c452-4923-ac76-138a116383fe"></span></p>
+<p>The page below is only visible to our maintainers.</p>
+<p><span class="raw-html-m2r"><img width="1185" alt="image" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/d63e4339-e465-4b79-adb3-ae5a057c7433"></span></p>
+</li>
+</ol>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="Docker%20Deployment.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Docker Deployment</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="Deployment.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Local Deployment</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Wenyu
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
+</html>

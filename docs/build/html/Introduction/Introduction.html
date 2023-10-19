@@ -1,0 +1,435 @@
+<!doctype html>
+<html class="no-js" lang="EN">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+        <title>Quick Installation - Wenyu&#39;s Online Notes documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: blue;
+  --color-admonition-background: orange;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     <em>More tutorial videos can be found on bilibili: ZJU_Earth_Data</em> 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Wenyu's Online Notes  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://th.bing.com/th/id/OIP.WUtY1HykWXIxus0pXWS1jgHaG2?pid=ImgDet&rs=1" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">AutoWare Universe</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AutoWare%20Universe/Perception.html">Perception</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <p>
+<img src="./docs/Geochemistry π.png" class="center"/>
+</p>
+<p align="center">
+<img src="https://img.shields.io/github/actions/workflow/status/ZJUEarthData/geochemistrypi/geochemistrypy.yml?logo=github">
+<img src="https://img.shields.io/github/license/ZJUEarthData/geochemistrypi">
+<img src="https://img.shields.io/github/v/release/ZJUEarthData/geochemistrypi?include_prereleases">
+<img src="https://static.pepy.tech/personalized-badge/geochemistrypi?period=total&units=international_system&left_color=grey&right_color=green&left_text=Downloads">
+<img src="https://img.shields.io/pypi/pyversions/geochemistrypi">
+</p><hr class="docutils" />
+<p><strong>Documentation</strong>: <span class="raw-html-m2r"><a href="https://geochemistrypi.readthedocs.io" target="_blank">https://geochemistrypi.readthedocs.io</a></span></p>
+<p><strong>Source Code</strong>: <span class="raw-html-m2r"><a href="https://github.com/ZJUEarthData/geochemistrypi" target="_blank">https://github.com/ZJUEarthData/geochemistrypi</a></span></p>
+<hr class="docutils" />
+<p>Geochemistry π is <strong>a Python framework</strong> for data-driven geochemistry discovery. It provides an extendable tool and one-stop shop for <strong>geochemical data analysis</strong> on tabular data.</p>
+<p>The goal of the Geochemistry π is to create a series of user-friendly and extensible products of high automation for the full cycle of geochemistry research.</p>
+<p>Key features are:</p>
+<ul class="simple">
+<li><p><strong>Easy to use:</strong> The automation of data mining process provides the users with simple number options to choose.</p></li>
+<li><p><strong>Extensible:</strong> It allows appending new algorithms through Scikit-learn with augmented AutoML functionality by FLAML and Ray.</p></li>
+</ul>
+<p>Latest Update: follow up by clicking <code class="docutils literal notranslate"><span class="pre">Starred</span></code> and  <code class="docutils literal notranslate"><span class="pre">Watch</span></code> on our <a class="reference external" href="https://github.com/ZJUEarthData/geochemistrypi">GitHub repository</a>, then get email notifications of the newest features automatically.</p>
+<section id="quick-installation">
+<h1>Quick Installation<a class="headerlink" href="#quick-installation" title="Permalink to this heading">#</a></h1>
+<p>One instruction to download on <strong>command line</strong>, such as Terminal on macOS, CMD on Windows.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">geochemistrypi</span>
+</pre></div>
+</div>
+<p>One instruction to download on <strong>Jupyter Notebook</strong> or <strong>Google Colab</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install geochemistrypi
+</pre></div>
+</div>
+<p><strong>Note</strong>: The beta version runs on MacOS, Windows or Linux.</p>
+</section>
+<section id="quick-update">
+<h1>Quick Update<a class="headerlink" href="#quick-update" title="Permalink to this heading">#</a></h1>
+<p>One instruction to update the software to the latest version on <strong>command line</strong>, such as Terminal on macOS, CMD on Windows.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">geochemistrypi</span>
+</pre></div>
+</div>
+<p>One instruction to download on <strong>Jupyter Notebook</strong> or <strong>Google Colab</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install --upgrade geochemistrypi
+</pre></div>
+</div>
+</section>
+<section id="example">
+<h1>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h1>
+<p><strong>How to run:</strong> After successfully downloading, run this instruction on <strong>command line / Jupyter Notebook / Google Colab</strong> whatever directory it is.</p>
+<section id="case-1-run-with-built-in-data-set-for-testing">
+<h2>Case 1: Run with built-in data set for testing<a class="headerlink" href="#case-1-run-with-built-in-data-set-for-testing" title="Permalink to this heading">#</a></h2>
+<p>On command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geochemistrypi</span> <span class="n">data</span><span class="o">-</span><span class="n">mining</span>
+</pre></div>
+</div>
+<p>On Jupyter Notebook / Google Colab:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!geochemistrypi data-mining
+</pre></div>
+</div>
+<p><strong>Note</strong>: There are four built-in data sets corresponding to four kinds of model pattern.</p>
+</section>
+<section id="case-2-run-with-your-own-data-set">
+<h2>Case 2: Run with your own data set<a class="headerlink" href="#case-2-run-with-your-own-data-set" title="Permalink to this heading">#</a></h2>
+<p>On command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geochemistrypi</span> <span class="n">data</span><span class="o">-</span><span class="n">mining</span> <span class="o">--</span><span class="n">data</span> <span class="n">your_own_data_set</span><span class="o">.</span><span class="n">xlsx</span>
+</pre></div>
+</div>
+<p>On Jupyter Notebook / Google Colab:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!geochemistrypi data-mining --data your_own_data_set.xlsx
+</pre></div>
+</div>
+<p><strong>Note</strong>: Currently, only <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code> file is supported. Please specify the path your data file exists. For Google Colab, don’t forget to upload your dataset first.</p>
+<p>For more details: Please refer to:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://drive.google.com/file/d/1yryykCyWKM-Sj88fOYbOba6QkB_fu2ws/view?usp=sharing">Manual v1.1.0 for Geochemistry π - Beta (International - Google drive)</a></p></li>
+<li><p><a class="reference external" href="https://docs.qq.com/pdf/DQ0l5d2xVd2VwcnVW?&amp;u=6868f96d4a384b309036e04e637e367a">Manual v1.1.0 for Geochemistry π - Beta (China - Tencent Docs)</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=EeVaJ3H7_AU&amp;list=PLy8hNsI55lvh1UHjhVhqNUj3xPdV9sEiM&amp;index=9">Geochemistry π - Download and Run the Beta Version (International - Youtube)</a></p></li>
+<li><p><a class="reference external" href="https://www.bilibili.com/video/BV1UM4y1Q7Ju/?spm_id_from=333.999.0.0&amp;vd_source=27944ab3b73a78970c1a52a5dcbb9140">Geochemistry π - Download and Run the Beta Version (China - Bilibili)</a></p></li>
+</ul>
+<section id="roadmap">
+<h3>Roadmap<a class="headerlink" href="#roadmap" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="first-phase">
+<h2>First Phase<a class="headerlink" href="#first-phase" title="Permalink to this heading">#</a></h2>
+<p>It works as a <strong>software application</strong> with a command-line interface (CLI) to automate <strong>data mining</strong> process with frequently-used <strong>machine learning algorithms</strong> and <strong>statistical analysis methods</strong>, which would further lower the threshold for the geochemists.</p>
+<p>The highlight is that through choosing <strong>simple number options</strong>, the users are able to implement a completed cycle of data mining <strong>without knowledge of</strong> SciPy, NumPy, Pandas, Scikit-learn, FLAML, Ray packages.</p>
+<p>The following figure is the activity diagram of automated ML pipeline in Geochemistry π:</p>
+<p><span class="raw-html-m2r"><img src="./docs/Geochemistryπ-Activity%20Diagram_v1.png" /></span></p>
+<p>Its data section provides feature engineering based on <strong>arithmatic operation</strong>. It allows the users to have a statistic analysis on the data set as well as on the imputation result, which is supported by the combination of <strong>Monte Carlo simulation</strong> and <strong>hypothesis testing</strong>.</p>
+<p>Its models section provides both <strong>supervised learning</strong> and <strong>unsupervised learning</strong> methods from <strong>Scikit-learn</strong> framework, including four types of algorithms, regression, classification, clustering, and dimensional reduction. Integrated with <strong>FLAML</strong> and <strong>Ray</strong> framework, it allows the users to run AutoML easily, fastly and cost-effectively on the built-in supervised learning algorithms in our framework.</p>
+</section>
+<section id="second-phase">
+<h2>Second Phase<a class="headerlink" href="#second-phase" title="Permalink to this heading">#</a></h2>
+<p>Currently, we are building three access ways to provide more user-friendly service, including <strong>web portal</strong>, <strong>CLI package</strong> and <strong>API</strong>. It allows the user to perform <strong>continuous training</strong> of the model by automating the ML pipeline in different layers.</p>
+<p>The following figure is the system architecture diagram of Geochemistry π: <span class="raw-html-m2r"><br></span></p>
+<a class="reference external image-reference" href="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/2d775737-8bdb-4477-a5b2-ac791b2aacc8"><img alt="System Architecture Diagram" src="https://github.com/ZJUEarthData/geochemistrypi/assets/47497750/2d775737-8bdb-4477-a5b2-ac791b2aacc8" /></a>
+<p>The whole package is under construction and the documentation is progressively evolving.</p>
+</section>
+</section>
+<section id="team-info">
+<h1>Team Info<a class="headerlink" href="#team-info" title="Permalink to this heading">#</a></h1>
+<p><strong>Leader:</strong></p>
+<ul class="simple">
+<li><p>Can He (Sany, National University of Singapore, Singapore)
+Email: <a class="reference external" href="mailto:sanyhew1097618435&#37;&#52;&#48;163&#46;com">sanyhew1097618435<span>&#64;</span>163<span>&#46;</span>com</a></p></li>
+</ul>
+<p><strong>Core Developers:</strong></p>
+<ul class="simple">
+<li><p>Jianhao Sun (Jin, China University of Geosciences, Wuhan, China)</p></li>
+<li><p>Jianming Zhao (Jamie, Jilin University, Changchun, China)</p></li>
+<li><p>Yang Lyu (Daisy, Zhejiang University, China)</p></li>
+<li><p>Shengxin Wang (Samson, Lanzhou University, China)</p></li>
+<li><p>Wenyu Zhao (Molly, Zhejiang University, China)</p></li>
+</ul>
+<p><strong>Members</strong>:</p>
+<ul class="simple">
+<li><p>Fang Li (liv, Shenzhen University, China)</p></li>
+<li><p>Ting Liu (Kira, Sun Yat-sen University, China)</p></li>
+<li><p>Kaixin Zheng (Hayne, Sun Yat-sen University, China)</p></li>
+<li><p>Aixiwake·Janganuer (Ayshuak, Sun Yat-sen University, China)</p></li>
+<li><p>Jianing Wang (National University of Singapore, Singapore)</p></li>
+<li><p>Yongkang Chang (Kill-virus, Langzhou University, China)</p></li>
+<li><p>Bailun Jiang (EPSI / Lille University, France)</p></li>
+<li><p>Yucheng Yan (Andy, University of Sydney)</p></li>
+<li><p>Keran Li (Kirk, Chengdu University of Technology)</p></li>
+<li><p>Mengying Ye (Mary, Jilin University, Changchun, China)</p></li>
+</ul>
+</section>
+<section id="join-us">
+<h1>Join Us :)<a class="headerlink" href="#join-us" title="Permalink to this heading">#</a></h1>
+<p><strong>The recruitment of research interns is ongoing !!!</strong></p>
+<p><strong>Key Point: All things are done online, remote work (*^▽^*)</strong></p>
+<p><strong>What can you learn?</strong></p>
+<ul class="simple">
+<li><p>Learning the full cycle of data mining on tabular data, including the algorithms in regression,classification, clustering, and decomposition.</p></li>
+<li><p>Learning to be a qualified Python developer, including any Python programing contents towards data mining, basic software engineering techniques like OOP developing, and cooperation tools like Git.</p></li>
+</ul>
+<p><strong>What can you get?</strong></p>
+<ul class="simple">
+<li><p>Research internship proof and reference letter after working for &gt; 200 hours.</p></li>
+<li><p>Chance to pay a visit to Hangzhou, China, sponsored by ZJU Earth Data.</p></li>
+<li><p>Chance to be guided by the experts from IT companies in Silicon Valley and Hangzhou.</p></li>
+<li><p>Bonus depending on your performance.</p></li>
+</ul>
+<p><strong>Current Working Pattern:</strong></p>
+<ul class="simple">
+<li><p>Online working and cooperation</p></li>
+<li><p>Three weeks per working cycle -&gt; One online meeting per working cycle</p></li>
+<li><p>One cycle report (see below) per cycle - 5 mins to finish</p></li>
+</ul>
+<p>Even if you are not familiar with topics above, but if you are interested in and have plenty of time to do it. That’s enough. We have a full-developed training system to help you, as a newbie of data mining or Python developer, learn steps by steps with seniors until you can make a significant contribution to our project.</p>
+<p><strong>More details about the project?</strong>
+Please refer to:
+English Page: <a class="reference external" href="https://person.zju.edu.cn/en/zhangzhou">https://person.zju.edu.cn/en/zhangzhou</a>
+Chinese Page: <a class="reference external" href="https://person.zju.edu.cn/zhangzhou#0">https://person.zju.edu.cn/zhangzhou#0</a></p>
+<p><strong>Do you want to contribute to this open-source program?</strong>
+Contact with your CV: <a class="reference external" href="mailto:sanyhew1097618435&#37;&#52;&#48;163&#46;com">sanyhew1097618435<span>&#64;</span>163<span>&#46;</span>com</a></p>
+</section>
+<section id="in-house-materials">
+<h1>In-house Materials<a class="headerlink" href="#in-house-materials" title="Permalink to this heading">#</a></h1>
+<p>Materials are in both Chinese and English. Others unshown below are internal materials.</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://docs.google.com/document/d/1LjwB5Lazk33E5vbtnFPJio_MyjYQxjEu/edit?usp=sharing&amp;ouid=110717816678586054594&amp;rtpof=true&amp;sd=true">Guideline Manual – Geochemistry π (International - Google drive)</a></p></li>
+<li><p><a class="reference external" href="https://docs.qq.com/doc/DQ21IZUdVQktqRWpm?&amp;u=6868f96d4a384b309036e04e637e367a">Guideline Manual – Geochemistry π (China - Tencent Docs)</a></p></li>
+<li><p><a class="reference external" href="https://docs.google.com/document/d/1GQO-SXwEx_8midr362pqfxNZtfUf-nA6/edit?usp=sharing&amp;ouid=110717816678586054594&amp;rtpof=true&amp;sd=true">Learning Steps for Newbies – Geochemistry π (International - Google drive)</a></p></li>
+<li><p><a class="reference external" href="https://docs.qq.com/doc/DTlVEakt2WnJrdkN1?&amp;u=6868f96d4a384b309036e04e637e367a">Learning Steps for Newbies - Geochemistry π (China - Tencent Docs)</a></p></li>
+<li><p><a class="reference external" href="https://drive.google.com/file/d/12UPrGqrj9hl0_vK8r-m6xykh_6052OtI/view?usp=sharing">Code Specification v2.1.2 - Geochemistry π (International - Google drive)</a></p></li>
+<li><p><a class="reference external" href="https://docs.qq.com/pdf/DQ2pmc1l1Z2t3QVFa?&amp;u=6868f96d4a384b309036e04e637e367a">Code Specification v2.1.2 - Geochemistry π (China - Tencent Docs)</a></p></li>
+<li><p><a class="reference external" href="https://drive.google.com/file/d/1JPZoSLcPRqzu6LDvw8wLQkV2GfJoER51/view?usp=sharing">Cycle Report - Geochemistry π (International - Google drive)</a></p></li>
+<li><p><a class="reference external" href="https://docs.qq.com/pdf/DQ25VSGNlbGx4UkFZ?&amp;u=6868f96d4a384b309036e04e637e367a">Cycle Report - Geochemistry π (China - Tencent Docs)</a></p></li>
+</ol>
+</section>
+<section id="in-house-videos">
+<h1>In-house Videos<a class="headerlink" href="#in-house-videos" title="Permalink to this heading">#</a></h1>
+<p>Technical record videos are on Bilibili and Youtube synchronously while other meeting videos are internal materials.
+More Videos will be recorded soon.</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.bilibili.com/video/BV1Lf4y1w7EK?spm_id_from=333.999.0.0">ZJU_Earth_Data Introduction (Geochemical Data, Python, Geochemistry π) - Prof. Zhang</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=1DWoEsqsfvQ&amp;list=PLy8hNsI55lvh1UHjhVhqNUj3xPdV9sEiM&amp;index=3">How to Collaborate and Provide Bug Report on Geochemistry π Through GitHub - Can He (Sany)</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=EeVaJ3H7_AU&amp;list=PLy8hNsI55lvh1UHjhVhqNUj3xPdV9sEiM&amp;index=9">Geochemistry π - Download and Run the Beta Version</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=4KFi7OXxD-c&amp;list=PLy8hNsI55lvh1UHjhVhqNUj3xPdV9sEiM&amp;index=4">How to Create and Use Virtual Environment on Geochemistry π - Can He (Sany)</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=KT1g5JpuUVI&amp;list=PLy8hNsI55lvh1UHjhVhqNUj3xPdV9sEiM">How to use Github-Desktop in conflict resolution - Qiuhao Zhao (Brad)</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=e4VqSBuNp_o&amp;list=PLy8hNsI55lvh1UHjhVhqNUj3xPdV9sEiM&amp;index=2">Virtual Environment &amp; Packages On Windows - Jianming Zhao (Jamie)</a></p></li>
+<li><p><a class="reference external" href="https://www.bilibili.com/video/BV1Sa4y1f74k?spm_id_from=333.999.0.0&amp;vd_source=9adcf2c5fdeffe1d11c89d441ef598ba">Git Workflow &amp; Coordinating Synchronization - Jianming Zhao (Jamie)</a></p></li>
+</ol>
+</section>
+<section id="contributors">
+<h1>Contributors<a class="headerlink" href="#contributors" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Qiuhao Zhao (Brad, Zhejiang University, China)</p></li>
+<li><p>Anzhou Li (Andrian, Zhejiang University, China)</p></li>
+<li><p>Dan Hu (Notre Dame University, United States)</p></li>
+<li><p>Xunxin Liu (Tante, China University of Geosciences, Wuhan, China)</p></li>
+<li><p>Xin Li (The University of Manchester, United Kingdom)</p></li>
+<li><p>Xirui Zhu (Rae, University of York, United Kingdom)</p></li>
+</ul>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Wenyu
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
+</html>

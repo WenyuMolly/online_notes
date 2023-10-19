@@ -1,0 +1,817 @@
+<!doctype html>
+<html class="no-js" lang="EN">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Contributors" href="Contributor.html" /><link rel="prev" title="1. Geochemistry π Project Introduction" href="../User%20Docs%20link.html" />
+
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+        <title>Code of Conduct - Wenyu&#39;s Online Notes documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: blue;
+  --color-admonition-background: orange;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     <em>More tutorial videos can be found on bilibili: ZJU_Earth_Data</em> 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Wenyu's Online Notes  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://user-images.githubusercontent.com/66779478/253803187-8a139235-0093-42a9-8b01-426a246e6916.png" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">AutoWare Universe</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AutoWare%20Universe/Perception.html">Perception</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Example</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Model%20Example/Data_Preprocessing/Data%20Preprocessing.html">Data Cleaning &amp; Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Model%20Example/Clustering/Clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Model%20Example/Classification/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Model%20Example/Decomposition/decomposition.html">Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Model%20Example/Regression/Regression.html">Regression</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contact Us</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Contact%20us/bug_template.html">Bug Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contact%20us/Q%26A.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Contact%20us/Join%20us.html">Join Us :)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Documents' link</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Docs%20link.html"><strong>1. Geochemistry π Project Introduction</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Docs%20link.html#code-download-link"><strong>2. Code Download Link</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Docs%20link.html#installing-and-model-running-video"><strong>3. Installing and Model Running Video</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Docs%20link.html#installing-and-model-running-docs"><strong>4. Installing and Model Running Docs</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Docs%20link.html#users-feedback-doc"><strong>5. Users Feedback Doc</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Contributor.html">Contributors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Guide.html">Table of Contents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Developer/Deployment.html">Local Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developer/Git.html">A Completed Pull Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developer/Docker%20Deployment.html">Docker Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developer/Developer%20Guide/Developer%20Manual.html">Developer Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developer/Developer%20Guide/Developer%20Manual.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developer/Developer%20Guide/Developer%20Manual.html#installation-a-name-installation-a">1. Installation <span class="raw-html-m2r"><a name="installation"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developer/Developer%20Guide/Developer%20Manual.html#example-a-name-example-a">2. Example<span class="raw-html-m2r"><a name="example"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developer/Developer%20Guide/Developer%20Manual.html#data-format-a-name-data-a">3. Data Format<span class="raw-html-m2r"><a name="data"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developer/Developer%20Guide/Developer%20Manual.html#use-a-name-use-a">4. Use<span class="raw-html-m2r"><a name="use"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developer/Developer%20Guide/Developer%20Manual.html#bug-report-a-name-bug-a">5. Bug Report<span class="raw-html-m2r"><a name="bug"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developer/Developer%20Guide/Developer%20Manual.html#advice-a-name-advice-a">6. Advice<span class="raw-html-m2r"><a name="advice"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developer/Algorithm%20Functionality%20Addition%20Procedure_geochemistrypi%20020_CN/data_mining_geochemistrypi020.html">Data-mining v0.2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developer/Developer%20Docs%20link.html">Developers Documents Link</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python_apis/api.html">data_readiness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_apis/api.html#feature-engineering">feature_engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_apis/api.html#data-imputation">data.imputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_apis/api.html#data-preprocessing">data.preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_apis/api.html#data-statistic">data.statistic</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="code-of-conduct">
+<h1>Code of Conduct<a class="headerlink" href="#code-of-conduct" title="Permalink to this heading">#</a></h1>
+<p>Contents：</p>
+<ol class="arabic simple">
+<li><p>Naming Conventions</p></li>
+<li><p>Space Usage</p></li>
+<li><p>Variable Type Hint</p></li>
+<li><p>TODO or FIXME Comments</p></li>
+<li><p>Docstring</p></li>
+<li><p>Test Module</p></li>
+<li><p>Git Commit Message</p></li>
+</ol>
+<p>P.S.：Your suggestions are welcome if there is anything which you think needs to be added during the development process.👏</p>
+<section id="naming-conventions">
+<h2>1. Naming Conventions<a class="headerlink" href="#naming-conventions" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Function：Underscore Case, in which using an underscore(_) to separate one word from the next，and the words are generally lowercase.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">foo_name</span><span class="p">(</span><span class="n">param</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Class：Upper Camel Case</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FooName</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Variable：Underscore Case, in which using an underscore(_) to separate one word from the next，and the words are generally lowercase.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">var_name</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Global Variables：Using an underscore(_) to separate the uppercase letter.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># We usually do not use it in a single.py file, but define it at the top level of global_variable.py.</span>
+<span class="n">CONT_VAR</span> <span class="o">=</span> <span class="s1">&#39;Geochemistry Py&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="space-usage">
+<h2>2. Space Usage<a class="headerlink" href="#space-usage" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Equal sign ‘=’ : The use of Spaces around the equals sign for variable assignment and function parameter assignment is different.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># When we assign a value to a variable, there is a space before and after the &#39;=&#39;.</span>
+<span class="n">var</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># When function arguments are called and assigned, Spaces are not required before and after &#39;=&#39;.</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="n">var</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">&#39;yes&#39;</span><span class="p">)</span>
+
+<span class="c1"># When assigning a default value to a type hint, Spaces are required before and after &#39;=&#39;. For what is a type hint, please read the second half of this documentation.</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">param</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Binary operator: There are two cases, whether it is used in the position of the argument. And we have to consider the operator precedence.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># When we use a binary operator in the function argument position, we do not type a Space before or after it.</span>
+<span class="n">var</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="n">param</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># When we use it outside the parameter position, we need to type a Space both before and after it.</span>
+<span class="n">var</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="n">var</span> <span class="o">+=</span> <span class="mi">2</span>
+
+<span class="c1"># We only need to add Spaces around the operators with the lowest priority, and nothing else.</span>
+<span class="n">var</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">var</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Annotation: Use <strong>#</strong> with a space followed by a capital letter.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># It prints a word</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Geochemistry Py&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Refer to the English format and leave a space after each punctuation mark.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+<span class="n">var3</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="s1">&#39;yes&#39;</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+<section id="variable-type-hint">
+<h2>3. Variable Type Hint<a class="headerlink" href="#variable-type-hint" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Type hint: It is a type hint and check for IDEs (e.g. Pycharm) parameters, which can specify the type of the parameter and the return type of the function.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># What is the type hint and what does it do specifically refer to this link ：https://sikasjc.github.io/2018/07/14/type-hint-in-python/</span>
+
+<span class="c1"># Below is a list of the types that our members might be involved in, along with examples.</span>
+
+<span class="c1"># str，int，return</span>
+<span class="c1"># Function foo takes argument p1 of type str, argument p2 of type int, and returns type str.</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">p1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">p2</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39;hi&#39;</span>
+
+
+<span class="c1"># list，tuple, set</span>
+<span class="c1"># Function foo takes argument p1 of type list, and each element in the list is of type int.</span>
+<span class="c1"># Parameter p2 is passed in of type tuple, and each element in the tuple is of type int.</span>
+<span class="c1"># Parameter p3 is passed in of type set, and each element in the collection is of type str.</span>
+<span class="c1"># Function has no return value.</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Set</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">p1</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">p2</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">p3</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p3</span><span class="p">)</span>
+
+
+<span class="c1"># dict, nested</span>
+<span class="c1"># Function foo takes argument p1 of type dict, where the key is of type str and the value of type int.</span>
+<span class="c1"># Parameter p2 is passed as a list of type, and each element in the list is of type tuple.</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">p1</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">:</span> <span class="nb">int</span><span class="p">],</span> <span class="n">p2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+
+
+<span class="c1"># bool，default value, any type</span>
+<span class="c1"># Function foo takes parameter p1 as bool, which defaults to True, and parameter p2 can be of any type.</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">p1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">p2</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">p1</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+
+
+<span class="c1"># Union: we use it when there is a parameter with multiple possible data types.</span>
+<span class="c1"># The p1 argument to foo can be of type list or str.</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">p1</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+
+<span class="c1"># Optional is a simplification of Union. The data type of this parameter can be str in addition to None.</span>
+<span class="c1"># So Optional[str] is equivalent to Union[str, None], where None is different from the function with the default argument None, which cannot be ignored.</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">p1</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39;Geochemistry Py&#39;</span>
+
+
+<span class="c1"># Tuple: used when returning multiple values.</span>
+<span class="c1"># Function foo return two values whose types are str and list respectively</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">List</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Geochemistry Py&#39;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+
+
+<span class="c1"># pandas.DataFrame, pandas.Series, numpy.ndarray</span>
+<span class="c1"># The input type of parameter p1 is pandas.DataFrame and type of parameter p2 is pandas.Series,</span>
+<span class="c1"># The input type of parameter p3 is pandas.Index and type of parameter p4 is numpy.ndarray.</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">f2</span><span class="p">(</span><span class="n">p1</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">p2</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">p3</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">,</span> <span class="n">p4</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="todo-or-fixme-comments">
+<h2>4. TODO or FIXME Comments<a class="headerlink" href="#todo-or-fixme-comments" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>‘TODO’ or ‘FIXME’ should be followed by your name and email to inform others of what to add or change in this code.</p></li>
+<li><p>We can quickly retrieve the number and location of TODOs using an IDE (e.g. Pycharm).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO(Sany hecan@mail2.sysu.edu.cn): Append a new function for ...</span>
+<span class="c1"># FIXME(Sany hecan@mail2.sysu.edu.cn): Correct this error of ...</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="docstring">
+<h2>5. Docstring<a class="headerlink" href="#docstring" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Docstring is a string that appears on the first line of a module, function, class or method definition, and this docstring is used as the __doc__ property of that object;</p></li>
+<li><p>From a specification point of view, all modules should have docstrings, including the functions and classes introduced from the module;</p></li>
+<li><p>All content types of Docstring are as follows, and not every docstring has to contain all the following content types, just the ones we need.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Briefly describe the function the code is intended to achieve.</span>
+
+<span class="sd">Parameters</span>
+<span class="sd">----------</span>
+<span class="sd">We can explain the data type, data meaning, and source of the parameters defined by the function.</span>
+<span class="sd">parameter name : data type</span>
+<span class="sd">    (four blanks) Parameter Meaning / Source</span>
+
+<span class="sd">temperature : int, str</span>
+<span class="sd">    Temperature at which minerals are formed. From ‘temperature.xlsx’.</span>
+
+<span class="sd">density : float</span>
+<span class="sd">        Density of the minerals.</span>
+
+<span class="sd">Returns</span>
+<span class="sd">-------</span>
+<span class="sd">We can interpret the type and meaning of the data in the output content of the function.</span>
+<span class="sd">parameter name : data type</span>
+<span class="sd">    (four blanks) Parameter Meaning / Source</span>
+
+<span class="sd">temperature : int, str</span>
+<span class="sd">    Temperature at which minerals are formed. From ‘temperature.xlsx’.</span>
+
+<span class="sd">References</span>
+<span class="sd">----------</span>
+<span class="sd">The source of the code citation can be a literature, website, book, and other sources. When citing multiple documents, you need to indicate [1][2][3] with a serial number and start a separate line.</span>
+<span class="sd">Format of journal/book : Author + year of publication + title of article + title of journal + volume number + page number</span>
+<span class="sd">Format of the page/website : author + year and month of publication + title + website name + website link</span>
+<span class="sd">Note: When the number of authors is greater than two, it can be written as &#39;first author&#39;s name + et al.&#39;, e.g. Digne M., et al.</span>
+<span class="sd">[1] referecne1</span>
+<span class="sd">[2] reference2</span>
+
+<span class="sd">Todo</span>
+<span class="sd">----</span>
+<span class="sd">To-do list. When there is more than one to-do list, we need to mark (1)(2)(3) with a serial number and start a new line.</span>
+<span class="sd">(1) Task1</span>
+<span class="sd">(2) Task2</span>
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+<span class="sd">This section includes the requirements for the data, a description of the relevant operations, problems and solutions that may be encountered, and background on the mathematical formulae (using Latex syntax).</span>
+<span class="sd">When the Note section contains more than one note, it needs to be marked with a serial number (1)(2)(3) or the * symbol, and on a separate line.</span>
+<span class="sd">(1) Math :</span>
+<span class="sd">            sin(2k\pi + \alpha)= sin\alpha·cos(2k\pi + \alpha)= cos\alpha·tan(2k\pi + \alpha)</span>
+<span class="sd">(2) Data :</span>
+<span class="sd">        The data should from  ‘temperature.xlsx’.</span>
+<span class="sd">(3) Problem :</span>
+<span class="sd">            When you run,you may meet the problem like...</span>
+
+<span class="sd">Examples</span>
+<span class="sd">--------</span>
+<span class="sd">Sample doctest tests. Please refer to the Test Module of 《Geochemistry Py - Code Specification》 document for details.</span>
+<span class="sd">&gt;&gt;&gt; # comments</span>
+<span class="sd">&gt;&gt;&gt; foo(arg1, arg2)</span>
+<span class="sd">return value</span>
+
+<span class="sd">See also</span>
+<span class="sd">--------</span>
+<span class="sd">It identifies the location of other related codes for easy viewing.</span>
+<span class="sd">When there are multiple related codes, they need to be marked with serial numbers (1)(2)(3) or * symbols, and marked on a separate line.</span>
+<span class="sd">(1) Code : ’pyrolite.geochem.ind_first’</span>
+<span class="sd">(2) Code : ’pyrolite.geochem.ind_second’</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Samples</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">arg1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">arg2</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The function for what ...</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        arg1 : int</span>
+<span class="sd">                The actual meaning of arg1 ...</span>
+<span class="sd">        arg2 : int, default=1</span>
+<span class="sd">                The actual meaning of arg2 ...</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        value : int</span>
+<span class="sd">                The actual meaning of value ...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">arg1</span> <span class="o">+</span> <span class="n">arg2</span>
+    <span class="k">return</span> <span class="n">value</span>
+</pre></div>
+</div>
+</section>
+<section id="test-module">
+<h2>6. Test Module<a class="headerlink" href="#test-module" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>After finishing the code packaging work, we need to test the code.</p></li>
+<li><p>One way to develop high quality software is to develop test code for each feature and present test samples in both doctest and unittest formats.</p></li>
+<li><p>The test code needs to provide at least 2 or more test cases and try to take into account the boundary conditions of the code.</p></li>
+<li><p>The reason why unit testing is needed, common unit testing approaches and their linkages (Optional), please refer to following links：</p>
+<ul>
+<li><p><a class="reference external" href="https://python-course.eu/advanced-python/tests-doctest-unittest.php">https://python-course.eu/advanced-python/tests-doctest-unittest.php</a></p></li>
+<li><p><a class="reference external" href="https://python-course.eu/advanced-python/pytest.php">https://python-course.eu/advanced-python/pytest.php</a></p></li>
+</ul>
+</li>
+</ul>
+<section id="doctest">
+<h3>(1) Doctest<a class="headerlink" href="#doctest" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Doctest: Add test code to the <strong>Examples</strong> section of the Docstring of the necessary functions, methods and classes.</p></li>
+<li><p>It enhances the documentation with examples that can be used to confirm that the results of the code are consistent with the documentation.</p></li>
+<li><p>Please refer to the link to use Doctest：<a class="reference external" href="https://docs.python.org/3/library/doctest.html">https://docs.python.org/3/library/doctest.html</a></p></li>
+<li><p>Here is the passed example and the results displayed on the command line.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The passed example</span>
+
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">arg1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">arg2</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The function for what ...</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        arg1 : int</span>
+<span class="sd">                The actual meaning of arg1 ...</span>
+<span class="sd">        arg2 : int, default=1</span>
+<span class="sd">                The actual meaning of arg2 ...</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        value : int</span>
+<span class="sd">                The actual meaning of value ...</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; # run the python command</span>
+<span class="sd">        &gt;&gt;&gt; foo(2, 7)</span>
+<span class="sd">        9</span>
+<span class="sd">        &gt;&gt;&gt; foo(1, 2)</span>
+<span class="sd">        3</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">arg1</span> <span class="o">+</span> <span class="n">arg2</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># test whether doctest works well, notice that don&#39;t cover this part when submitting your code on GitHub</span>
+        <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ python3 test.py -v
+Trying:
+    foo(2, 7)
+Expecting:
+    9
+ok
+Trying:
+    foo(1, 2)
+Expecting:
+    3
+ok
+1 items had no tests:
+    __main__
+1 items passed all tests:
+   2 tests in __main__.foo
+2 tests in 2 items.
+2 passed and 0 failed.
+Test passed.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Here is the  failed example and the results displayed on the command line.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The failed example</span>
+
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">arg1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">arg2</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The function for what ...</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        arg1 : int</span>
+<span class="sd">                The actual meaning of arg1 ...</span>
+<span class="sd">        arg2 : int, default=1</span>
+<span class="sd">                The actual meaning of arg2 ...</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        value : int</span>
+<span class="sd">                The actual meaning of value ...</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; # run the python command</span>
+<span class="sd">        &gt;&gt;&gt; foo(2, 7)</span>
+<span class="sd">        7</span>
+<span class="sd">        &gt;&gt;&gt; foo(1, 2)</span>
+<span class="sd">        3</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">arg1</span> <span class="o">+</span> <span class="n">arg2</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># see whether doctest works well, notice that don&#39;t cover this part when submitting your code on GitHub</span>
+        <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ python3 test.py -v
+Trying:
+    foo(2, 7)
+Expecting:
+    7
+**********************************************************************
+File &quot;/Users/can/Documents/sany/work/big_data_geology/geochemistrypy/criteria/docstring/test.py&quot;, line 19, in __main__.foo
+Failed example:
+    foo(2, 7)
+Expected:
+    7
+Got:
+    9
+Trying:
+    foo(1, 2)
+Expecting:
+    3
+ok
+1 items had no tests:
+    __main__
+**********************************************************************
+1 items had failures:
+   1 of   2 in __main__.foo
+2 tests in 2 items.
+1 passed and 1 failed.
+***Test Failed*** 1 failures.
+</pre></div>
+</div>
+</section>
+<section id="unittest">
+<h3>(2) Unittest<a class="headerlink" href="#unittest" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Test samples are stored in a separate file outside the module to be tested, unlike Doctest, which is stored in the module’s Docstring.</p></li>
+<li><p>It is not as easy to use as the Doctest module, but it can provide a more comprehensive set of tests in a separate file.</p></li>
+<li><p>samples:</p></li>
+</ul>
+<p>tbc…</p>
+</section>
+</section>
+<section id="git-commit-message">
+<h2>7. Git Commit Message<a class="headerlink" href="#git-commit-message" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>One commit for one functionality implementation or one optimization or one bug fix. It is allowed to push multiple commits to the remote codebase with one pull request.</p></li>
+<li><p>Please include the following tags in the beginning of your commit message to make more organized commits and PRs. It would tell exactly what use it is in this commit.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">feat</span></code>: a new feature is introduced with the changes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fix</span></code>: a bug fix</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">perf</span></code>: an existing feature improved</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs</span></code>: changes to the documentation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">style</span></code>: code formatting</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">refactor</span></code>: refactoring production code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">revert</span></code>:  version revertion</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chore</span></code>: the change of developing tools or assisted tool</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test</span></code>: adding missing tests, refactoring tests</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build</span></code>: package the codebase</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ci</span></code>: continue integration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BREAKING</span> <span class="pre">CHANGE</span></code>: a breaking API change</p></li>
+</ul>
+</li>
+</ul>
+<p>Notice: the tags should be lower-case except for <code class="docutils literal notranslate"><span class="pre">BREAKING</span> <span class="pre">CHANGE</span></code>.</p>
+<ul class="simple">
+<li><p>Sample:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume that Sany build up a function of drawing the decision boundary for Decision Tree.</span>
+<span class="c1"># Then he wants to use git commit to append the code changes to his local codebase.</span>
+<span class="c1"># He will use the command in command line.</span>
+
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;feat: add a function to draw the decision boundary for Decision Tree.&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Reference:</p>
+<ul>
+<li><p><a class="reference external" href="https://www.conventionalcommits.org/en/v1.0.0-beta.2/#specification">Conventional Commits</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="Contributor.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Contributors</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../User%20Docs%20link.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title"><strong>1. Geochemistry π Project Introduction</strong></div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Wenyu
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Code of Conduct</a><ul>
+<li><a class="reference internal" href="#naming-conventions">1. Naming Conventions</a></li>
+<li><a class="reference internal" href="#space-usage">2. Space Usage</a></li>
+<li><a class="reference internal" href="#variable-type-hint">3. Variable Type Hint</a></li>
+<li><a class="reference internal" href="#todo-or-fixme-comments">4. TODO or FIXME Comments</a></li>
+<li><a class="reference internal" href="#docstring">5. Docstring</a></li>
+<li><a class="reference internal" href="#test-module">6. Test Module</a><ul>
+<li><a class="reference internal" href="#doctest">(1) Doctest</a></li>
+<li><a class="reference internal" href="#unittest">(2) Unittest</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#git-commit-message">7. Git Commit Message</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
+</html>

@@ -1,0 +1,731 @@
+<!doctype html>
+<html class="no-js" lang="EN">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Regression" href="../Regression/Regression.html" /><link rel="prev" title="Classification" href="../Classification/classification.html" />
+
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+        <title>Decomposition - Wenyu&#39;s Online Notes documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: blue;
+  --color-admonition-background: orange;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     <em>More tutorial videos can be found on bilibili: ZJU_Earth_Data</em> 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Wenyu's Online Notes  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://user-images.githubusercontent.com/66779478/253803187-8a139235-0093-42a9-8b01-426a246e6916.png" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">AutoWare Universe</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AutoWare%20Universe/Perception.html">Perception</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Installation.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Example</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Data_Preprocessing/Data%20Preprocessing.html">Data Cleaning &amp; Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Clustering/Clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Classification/classification.html">Classification</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Regression/Regression.html">Regression</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contact Us</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Contact%20us/bug_template.html">Bug Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Contact%20us/Q%26A.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Contact%20us/Join%20us.html">Join Us :)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Documents' link</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../User%20Docs%20link.html"><strong>1. Geochemistry π Project Introduction</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../User%20Docs%20link.html#code-download-link"><strong>2. Code Download Link</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../User%20Docs%20link.html#installing-and-model-running-video"><strong>3. Installing and Model Running Video</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../User%20Docs%20link.html#installing-and-model-running-docs"><strong>4. Installing and Model Running Docs</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../User%20Docs%20link.html#users-feedback-doc"><strong>5. Users Feedback Doc</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Contributing/Code%20Conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Contributing/Contributor.html">Contributors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../User%20Guide.html">Table of Contents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Developer/Deployment.html">Local Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developer/Git.html">A Completed Pull Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developer/Docker%20Deployment.html">Docker Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developer/Developer%20Guide/Developer%20Manual.html">Developer Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developer/Developer%20Guide/Developer%20Manual.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developer/Developer%20Guide/Developer%20Manual.html#installation-a-name-installation-a">1. Installation <span class="raw-html-m2r"><a name="installation"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developer/Developer%20Guide/Developer%20Manual.html#example-a-name-example-a">2. Example<span class="raw-html-m2r"><a name="example"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developer/Developer%20Guide/Developer%20Manual.html#data-format-a-name-data-a">3. Data Format<span class="raw-html-m2r"><a name="data"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developer/Developer%20Guide/Developer%20Manual.html#use-a-name-use-a">4. Use<span class="raw-html-m2r"><a name="use"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developer/Developer%20Guide/Developer%20Manual.html#bug-report-a-name-bug-a">5. Bug Report<span class="raw-html-m2r"><a name="bug"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developer/Developer%20Guide/Developer%20Manual.html#advice-a-name-advice-a">6. Advice<span class="raw-html-m2r"><a name="advice"> </a></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developer/Algorithm%20Functionality%20Addition%20Procedure_geochemistrypi%20020_CN/data_mining_geochemistrypi020.html">Data-mining v0.2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developer/Developer%20Docs%20link.html">Developers Documents Link</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python_apis/api.html">data_readiness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_apis/api.html#feature-engineering">feature_engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_apis/api.html#data-imputation">data.imputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_apis/api.html#data-preprocessing">data.preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_apis/api.html#data-statistic">data.statistic</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="decomposition">
+<h1>Decomposition<a class="headerlink" href="#decomposition" title="Permalink to this heading">#</a></h1>
+<section id="principal-component-analysis-pca">
+<h2>Principal Component Analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Permalink to this heading">#</a></h2>
+<p>Principal component analysis is usually known as PCA. PCA is an unsupervised learning method, in which the training data we feed to the algorithm does not need the desired labels. The aim of PCA is to reduce the dimension of high-dimensional input data. For example, there are x1, x2, x3, x4 and y, up to four columns of data. However, not all kinds of data are essential for the label y. So the PCA could be useful to abandon less important x for regressing/classifying y and accelerate data analysis.
+<span class="raw-html-m2r"><br /></span>
+<span class="raw-html-m2r"><br /></span>Note : This part would show the whole process of PCA, including data-processing and model-running.</p>
+</section>
+<section id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Permalink to this heading">#</a></h2>
+<p>First, after ensuring the Geochemistry Pi framework has been installed successfully (if not, please see docs ), we run the python framework in command line interface to process our program:
+If you do not input own data, you can run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>geochemistrypi<span class="w"> </span>data-mining
+</pre></div>
+</div>
+<p>If you prepare to input own data, you can run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>geochemistrypi<span class="w"> </span>data-mining<span class="w"> </span>--data<span class="w"> </span>your_own_data_set.xlsx
+</pre></div>
+</div>
+<p>The command line interface would show</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Geochemistry<span class="w"> </span>Py<span class="w"> </span>v.<span class="w"> </span><span class="m">1</span>.<span class="w"> </span><span class="m">0</span>.<span class="w"> </span><span class="m">0</span><span class="w"> </span>–<span class="w"> </span>Beta<span class="w"> </span>Version
+.......<span class="w"> </span>Initializing<span class="w"> </span>.......
+-*-*-<span class="w"> </span>Data<span class="w"> </span>Loading<span class="w"> </span>-*-*-
+Built-in<span class="w"> </span>Data<span class="w"> </span>Option:
+<span class="m">1</span><span class="w"> </span>–<span class="w"> </span>Data<span class="w"> </span>For<span class="w"> </span>Regression
+<span class="m">2</span><span class="w"> </span>-<span class="w"> </span>Data<span class="w"> </span>For<span class="w"> </span>Classification
+<span class="m">3</span><span class="w"> </span>-<span class="w"> </span>Data<span class="w"> </span>For<span class="w"> </span>Clustering
+<span class="m">4</span><span class="w"> </span>-<span class="w"> </span>Data<span class="w"> </span>For<span class="w"> </span>Dimensional<span class="w"> </span>Reduction
+</pre></div>
+</div>
+<p>You have to choose <a href="#id1"><span class="problematic" id="id2">**</span></a><em>Data For Dimensional Reduction</em>** and press 4 on your own keyboard. The command line interface would show</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Successfully<span class="w"> </span>loading<span class="w"> </span>the<span class="w"> </span>built-in<span class="w"> </span>data<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="s1">&#39;Data_Decomposition.xlsx&#39;</span>.
+--------------------
+Index<span class="w"> </span>-<span class="w"> </span>Column<span class="w"> </span>Name
+<span class="m">1</span><span class="w"> </span>-<span class="w"> </span>CITATION
+<span class="m">2</span><span class="w"> </span>-<span class="w"> </span>SAMPLE<span class="w"> </span>NAME
+<span class="m">3</span><span class="w"> </span>-<span class="w"> </span>Label
+<span class="m">4</span><span class="w"> </span>-<span class="w"> </span>Notes
+<span class="m">5</span><span class="w"> </span>-<span class="w"> </span>LATITUDE
+<span class="m">6</span><span class="w"> </span>-<span class="w"> </span>LONGITUDE
+<span class="m">7</span><span class="w"> </span>-<span class="w"> </span>Unnamed:<span class="w"> </span><span class="m">6</span>
+<span class="m">8</span><span class="w"> </span>-<span class="w"> </span>SIO2<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">9</span><span class="w"> </span>-<span class="w"> </span>TIO2<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">10</span><span class="w"> </span>-<span class="w"> </span>AL2O3<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">11</span><span class="w"> </span>-<span class="w"> </span>CR2O3<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">12</span><span class="w"> </span>-<span class="w"> </span>FEOT<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">13</span><span class="w"> </span>-<span class="w"> </span>CAO<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">14</span><span class="w"> </span>-<span class="w"> </span>MGO<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">15</span><span class="w"> </span>-<span class="w"> </span>MNO<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">16</span><span class="w"> </span>-<span class="w"> </span>NA2O<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">17</span><span class="w"> </span>-<span class="w"> </span>Unnamed:<span class="w"> </span><span class="m">16</span>
+<span class="m">18</span><span class="w"> </span>-<span class="w"> </span>SC<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">19</span><span class="w"> </span>-<span class="w"> </span>TI<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">20</span><span class="w"> </span>-<span class="w"> </span>V<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">21</span><span class="w"> </span>-<span class="w"> </span>CR<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">22</span><span class="w"> </span>-<span class="w"> </span>NI<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">23</span><span class="w"> </span>-<span class="w"> </span>RB<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">24</span><span class="w"> </span>-<span class="w"> </span>SR<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">25</span><span class="w"> </span>-<span class="w"> </span>Y<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">26</span><span class="w"> </span>-<span class="w"> </span>ZR<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">27</span><span class="w"> </span>-<span class="w"> </span>NB<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">28</span><span class="w"> </span>-<span class="w"> </span>BA<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">29</span><span class="w"> </span>-<span class="w"> </span>LA<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">30</span><span class="w"> </span>-<span class="w"> </span>CE<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">31</span><span class="w"> </span>-<span class="w"> </span>PR<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">32</span><span class="w"> </span>-<span class="w"> </span>ND<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">33</span><span class="w"> </span>-<span class="w"> </span>SM<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">34</span><span class="w"> </span>-<span class="w"> </span>EU<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">35</span><span class="w"> </span>-<span class="w"> </span>GD<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">36</span><span class="w"> </span>-<span class="w"> </span>TB<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">37</span><span class="w"> </span>-<span class="w"> </span>DY<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">38</span><span class="w"> </span>-<span class="w"> </span>HO<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">39</span><span class="w"> </span>-<span class="w"> </span>ER<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">40</span><span class="w"> </span>-<span class="w"> </span>TM<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">41</span><span class="w"> </span>-<span class="w"> </span>YB<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">42</span><span class="w"> </span>-<span class="w"> </span>LU<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">43</span><span class="w"> </span>-<span class="w"> </span>HF<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">44</span><span class="w"> </span>-<span class="w"> </span>TA<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">45</span><span class="w"> </span>-<span class="w"> </span>PB<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">46</span><span class="w"> </span>-<span class="w"> </span>TH<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">47</span><span class="w"> </span>-<span class="w"> </span>U<span class="o">(</span>PPM<span class="o">)</span>
+--------------------
+<span class="o">(</span>Press<span class="w"> </span>Enter<span class="w"> </span>key<span class="w"> </span>to<span class="w"> </span>move<span class="w"> </span>forward.
+</pre></div>
+</div>
+<p>Here, we just need to press any keyboard to continue.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>World<span class="w"> </span>Map<span class="w"> </span>Projection<span class="w"> </span><span class="k">for</span><span class="w"> </span>A<span class="w"> </span>Specific<span class="w"> </span>Element<span class="w"> </span>Option:
+<span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Yes
+<span class="m">2</span><span class="w"> </span>-<span class="w"> </span>No
+<span class="o">(</span>Plot<span class="o">)</span><span class="w"> </span>➜<span class="w"> </span>@Number::
+</pre></div>
+</div>
+<p>We can choose map projection if we need a world map projection for a specific element option. Choose yes, we can choose an element to map. Choose no, skip to the next mode. More information of the map projection can be seen in <a class="reference external" href="https://pyrolite.readthedocs.io/en/main/installation.html">map projection</a>. In this tutorial, we skip it and gain output as:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-*-*-<span class="w"> </span>Data<span class="w"> </span>Selected<span class="w"> </span>-*-*-
+--------------------
+Index<span class="w"> </span>-<span class="w"> </span>Column<span class="w"> </span>Name
+<span class="m">1</span><span class="w"> </span>-<span class="w"> </span>CITATION
+<span class="m">2</span><span class="w"> </span>-<span class="w"> </span>SAMPLE<span class="w"> </span>NAME
+<span class="m">3</span><span class="w"> </span>-<span class="w"> </span>Label
+<span class="m">4</span><span class="w"> </span>-<span class="w"> </span>Notes
+<span class="m">5</span><span class="w"> </span>-<span class="w"> </span>LATITUDE
+<span class="m">6</span><span class="w"> </span>-<span class="w"> </span>LONGITUDE
+<span class="m">7</span><span class="w"> </span>-<span class="w"> </span>Unnamed:<span class="w"> </span><span class="m">6</span>
+<span class="m">8</span><span class="w"> </span>-<span class="w"> </span>SIO2<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">9</span><span class="w"> </span>-<span class="w"> </span>TIO2<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">10</span><span class="w"> </span>-<span class="w"> </span>AL2O3<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">11</span><span class="w"> </span>-<span class="w"> </span>CR2O3<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">12</span><span class="w"> </span>-<span class="w"> </span>FEOT<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">13</span><span class="w"> </span>-<span class="w"> </span>CAO<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">14</span><span class="w"> </span>-<span class="w"> </span>MGO<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">15</span><span class="w"> </span>-<span class="w"> </span>MNO<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">16</span><span class="w"> </span>-<span class="w"> </span>NA2O<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">17</span><span class="w"> </span>-<span class="w"> </span>Unnamed:<span class="w"> </span><span class="m">16</span>
+<span class="m">18</span><span class="w"> </span>-<span class="w"> </span>SC<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">19</span><span class="w"> </span>-<span class="w"> </span>TI<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">20</span><span class="w"> </span>-<span class="w"> </span>V<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">21</span><span class="w"> </span>-<span class="w"> </span>CR<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">22</span><span class="w"> </span>-<span class="w"> </span>NI<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">23</span><span class="w"> </span>-<span class="w"> </span>RB<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">24</span><span class="w"> </span>-<span class="w"> </span>SR<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">25</span><span class="w"> </span>-<span class="w"> </span>Y<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">26</span><span class="w"> </span>-<span class="w"> </span>ZR<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">27</span><span class="w"> </span>-<span class="w"> </span>NB<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">28</span><span class="w"> </span>-<span class="w"> </span>BA<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">29</span><span class="w"> </span>-<span class="w"> </span>LA<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">30</span><span class="w"> </span>-<span class="w"> </span>CE<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">31</span><span class="w"> </span>-<span class="w"> </span>PR<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">32</span><span class="w"> </span>-<span class="w"> </span>ND<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">33</span><span class="w"> </span>-<span class="w"> </span>SM<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">34</span><span class="w"> </span>-<span class="w"> </span>EU<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">35</span><span class="w"> </span>-<span class="w"> </span>GD<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">36</span><span class="w"> </span>-<span class="w"> </span>TB<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">37</span><span class="w"> </span>-<span class="w"> </span>DY<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">38</span><span class="w"> </span>-<span class="w"> </span>HO<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">39</span><span class="w"> </span>-<span class="w"> </span>ER<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">40</span><span class="w"> </span>-<span class="w"> </span>TM<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">41</span><span class="w"> </span>-<span class="w"> </span>YB<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">42</span><span class="w"> </span>-<span class="w"> </span>LU<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">43</span><span class="w"> </span>-<span class="w"> </span>HF<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">44</span><span class="w"> </span>-<span class="w"> </span>TA<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">45</span><span class="w"> </span>-<span class="w"> </span>PB<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">46</span><span class="w"> </span>-<span class="w"> </span>TH<span class="o">(</span>PPM<span class="o">)</span>
+<span class="m">47</span><span class="w"> </span>-<span class="w"> </span>U<span class="o">(</span>PPM<span class="o">)</span>
+--------------------
+Select<span class="w"> </span>the<span class="w"> </span>data<span class="w"> </span>range<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>process.
+Input<span class="w"> </span>format:
+Format<span class="w"> </span><span class="m">1</span>:<span class="w"> </span><span class="s2">&quot;[**, **]; **; [**, **]&quot;</span>,<span class="w"> </span>such<span class="w"> </span>as<span class="w"> </span><span class="s2">&quot;[1, 3]; 7; [10, 13]&quot;</span><span class="w"> </span>--&gt;<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>deal<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>columns<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">7</span>,<span class="w"> </span><span class="m">10</span>,<span class="w"> </span><span class="m">11</span>,<span class="w"> </span><span class="m">12</span>,<span class="w"> </span><span class="m">13</span>
+Format<span class="w"> </span><span class="m">2</span>:<span class="w"> </span><span class="s2">&quot;xx&quot;</span>,<span class="w"> </span>such<span class="w"> </span>as<span class="w"> </span><span class="s2">&quot;7&quot;</span><span class="w"> </span>--&gt;<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>deal<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>columns<span class="w"> </span><span class="m">7</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>Two options are offered. For PCA, the Format 1 method is more useful in multiple dimensional reduction. As a tutorial, we input <a href="#id3"><span class="problematic" id="id4">**</span></a><em>[10, 15]</em>** as an example.</p>
+<p><strong>Note: [start_col_num, end_col_num]</strong></p>
+<p>The selected feature information would be given</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>The<span class="w"> </span>Selected<span class="w"> </span>Data<span class="w"> </span>Set:
+<span class="w">     </span>AL2O3<span class="o">(</span>WT%<span class="o">)</span><span class="w">  </span>CR2O3<span class="o">(</span>WT%<span class="o">)</span><span class="w">  </span>FEOT<span class="o">(</span>WT%<span class="o">)</span><span class="w">   </span>CAO<span class="o">(</span>WT%<span class="o">)</span><span class="w">   </span>MGO<span class="o">(</span>WT%<span class="o">)</span><span class="w">  </span>MNO<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">0</span><span class="w">      </span><span class="m">3</span>.936000<span class="w">       </span><span class="m">1</span>.440<span class="w">   </span><span class="m">3</span>.097000<span class="w">  </span><span class="m">18</span>.546000<span class="w">  </span><span class="m">18</span>.478000<span class="w">  </span><span class="m">0</span>.083000
+<span class="m">1</span><span class="w">      </span><span class="m">3</span>.040000<span class="w">       </span><span class="m">0</span>.578<span class="w">   </span><span class="m">3</span>.200000<span class="w">  </span><span class="m">20</span>.235000<span class="w">  </span><span class="m">17</span>.277000<span class="w">  </span><span class="m">0</span>.150000
+<span class="m">2</span><span class="w">      </span><span class="m">7</span>.016561<span class="w">         </span>NaN<span class="w">   </span><span class="m">3</span>.172049<span class="w">  </span><span class="m">20</span>.092611<span class="w">  </span><span class="m">15</span>.261175<span class="w">  </span><span class="m">0</span>.102185
+<span class="m">3</span><span class="w">      </span><span class="m">3</span>.110977<span class="w">         </span>NaN<span class="w">   </span><span class="m">2</span>.413834<span class="w">  </span><span class="m">22</span>.083843<span class="w">  </span><span class="m">17</span>.349203<span class="w">  </span><span class="m">0</span>.078300
+<span class="m">4</span><span class="w">      </span><span class="m">6</span>.971044<span class="w">         </span>NaN<span class="w">   </span><span class="m">2</span>.995074<span class="w">  </span><span class="m">20</span>.530008<span class="w">  </span><span class="m">15</span>.562149<span class="w">  </span><span class="m">0</span>.096700
+..<span class="w">          </span>...<span class="w">         </span>...<span class="w">        </span>...<span class="w">        </span>...<span class="w">        </span>...<span class="w">       </span>...
+<span class="m">104</span><span class="w">    </span><span class="m">2</span>.740000<span class="w">       </span><span class="m">0</span>.060<span class="w">   </span><span class="m">4</span>.520000<span class="w">  </span><span class="m">23</span>.530000<span class="w">  </span><span class="m">14</span>.960000<span class="w">  </span><span class="m">0</span>.060000
+<span class="m">105</span><span class="w">    </span><span class="m">5</span>.700000<span class="w">       </span><span class="m">0</span>.690<span class="w">   </span><span class="m">2</span>.750000<span class="w">  </span><span class="m">20</span>.120000<span class="w">  </span><span class="m">16</span>.470000<span class="w">  </span><span class="m">0</span>.120000
+<span class="m">106</span><span class="w">    </span><span class="m">0</span>.230000<span class="w">       </span><span class="m">2</span>.910<span class="w">   </span><span class="m">2</span>.520000<span class="w">  </span><span class="m">19</span>.700000<span class="w">  </span><span class="m">18</span>.000000<span class="w">  </span><span class="m">0</span>.130000
+<span class="m">107</span><span class="w">    </span><span class="m">2</span>.580000<span class="w">       </span><span class="m">0</span>.750<span class="w">   </span><span class="m">2</span>.300000<span class="w">  </span><span class="m">22</span>.100000<span class="w">  </span><span class="m">16</span>.690000<span class="w">  </span><span class="m">0</span>.050000
+<span class="m">108</span><span class="w">    </span><span class="m">6</span>.490000<span class="w">       </span><span class="m">0</span>.800<span class="w">   </span><span class="m">2</span>.620000<span class="w">  </span><span class="m">20</span>.560000<span class="w">  </span><span class="m">14</span>.600000<span class="w">  </span><span class="m">0</span>.070000
+
+<span class="o">[</span><span class="m">109</span><span class="w"> </span>rows<span class="w"> </span>x<span class="w"> </span><span class="m">6</span><span class="w"> </span>columns<span class="o">]</span>
+</pre></div>
+</div>
+<p>After continuing with any key, basic information of selected data would be shown</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Basic<span class="w"> </span>Statistical<span class="w"> </span>Information:
+&lt;class<span class="w"> </span><span class="s1">&#39;pandas.core.frame.DataFrame&#39;</span>&gt;
+RangeIndex:<span class="w"> </span><span class="m">109</span><span class="w"> </span>entries,<span class="w"> </span><span class="m">0</span><span class="w"> </span>to<span class="w"> </span><span class="m">108</span>
+Data<span class="w"> </span>columns<span class="w"> </span><span class="o">(</span>total<span class="w"> </span><span class="m">6</span><span class="w"> </span>columns<span class="o">)</span>:
+<span class="w"> </span><span class="c1">#   Column      Non-Null Count  Dtype</span>
+---<span class="w">  </span>------<span class="w">      </span>--------------<span class="w">  </span>-----
+<span class="w"> </span><span class="m">0</span><span class="w">   </span>AL2O3<span class="o">(</span>WT%<span class="o">)</span><span class="w">  </span><span class="m">109</span><span class="w"> </span>non-null<span class="w">    </span>float64
+<span class="w"> </span><span class="m">1</span><span class="w">   </span>CR2O3<span class="o">(</span>WT%<span class="o">)</span><span class="w">  </span><span class="m">98</span><span class="w"> </span>non-null<span class="w">     </span>float64
+<span class="w"> </span><span class="m">2</span><span class="w">   </span>FEOT<span class="o">(</span>WT%<span class="o">)</span><span class="w">   </span><span class="m">109</span><span class="w"> </span>non-null<span class="w">    </span>float64
+<span class="w"> </span><span class="m">3</span><span class="w">   </span>CAO<span class="o">(</span>WT%<span class="o">)</span><span class="w">    </span><span class="m">109</span><span class="w"> </span>non-null<span class="w">    </span>float64
+<span class="w"> </span><span class="m">4</span><span class="w">   </span>MGO<span class="o">(</span>WT%<span class="o">)</span><span class="w">    </span><span class="m">109</span><span class="w"> </span>non-null<span class="w">    </span>float64
+<span class="w"> </span><span class="m">5</span><span class="w">   </span>MNO<span class="o">(</span>WT%<span class="o">)</span><span class="w">    </span><span class="m">109</span><span class="w"> </span>non-null<span class="w">    </span>float64
+dtypes:<span class="w"> </span>float64<span class="o">(</span><span class="m">6</span><span class="o">)</span>
+memory<span class="w"> </span>usage:<span class="w"> </span><span class="m">5</span>.2<span class="w"> </span>KB
+None
+Some<span class="w"> </span>basic<span class="w"> </span>statistic<span class="w"> </span>information<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>designated<span class="w"> </span>data<span class="w"> </span>set:
+<span class="w">       </span>AL2O3<span class="o">(</span>WT%<span class="o">)</span><span class="w">  </span>CR2O3<span class="o">(</span>WT%<span class="o">)</span><span class="w">   </span>FEOT<span class="o">(</span>WT%<span class="o">)</span><span class="w">    </span>CAO<span class="o">(</span>WT%<span class="o">)</span><span class="w">    </span>MGO<span class="o">(</span>WT%<span class="o">)</span><span class="w">    </span>MNO<span class="o">(</span>WT%<span class="o">)</span>
+count<span class="w">  </span><span class="m">109</span>.000000<span class="w">   </span><span class="m">98</span>.000000<span class="w">  </span><span class="m">109</span>.000000<span class="w">  </span><span class="m">109</span>.000000<span class="w">  </span><span class="m">109</span>.000000<span class="w">  </span><span class="m">109</span>.000000
+mean<span class="w">     </span><span class="m">4</span>.554212<span class="w">    </span><span class="m">0</span>.956426<span class="w">    </span><span class="m">2</span>.962310<span class="w">   </span><span class="m">21</span>.115756<span class="w">   </span><span class="m">16</span>.178044<span class="w">    </span><span class="m">0</span>.092087
+std<span class="w">      </span><span class="m">1</span>.969756<span class="w">    </span><span class="m">0</span>.553647<span class="w">    </span><span class="m">1</span>.133967<span class="w">    </span><span class="m">1</span>.964380<span class="w">    </span><span class="m">1</span>.432886<span class="w">    </span><span class="m">0</span>.054002
+min<span class="w">      </span><span class="m">0</span>.230000<span class="w">    </span><span class="m">0</span>.000000<span class="w">    </span><span class="m">1</span>.371100<span class="w">   </span><span class="m">13</span>.170000<span class="w">   </span><span class="m">12</span>.170000<span class="w">    </span><span class="m">0</span>.000000
+<span class="m">25</span>%<span class="w">      </span><span class="m">3</span>.110977<span class="w">    </span><span class="m">0</span>.662500<span class="w">    </span><span class="m">2</span>.350000<span class="w">   </span><span class="m">20</span>.310000<span class="w">   </span><span class="m">15</span>.300000<span class="w">    </span><span class="m">0</span>.063075
+<span class="m">50</span>%<span class="w">      </span><span class="m">4</span>.720000<span class="w">    </span><span class="m">0</span>.925000<span class="w">    </span><span class="m">2</span>.690000<span class="w">   </span><span class="m">21</span>.223500<span class="w">   </span><span class="m">15</span>.920000<span class="w">    </span><span class="m">0</span>.090000
+<span class="m">75</span>%<span class="w">      </span><span class="m">6</span>.233341<span class="w">    </span><span class="m">1</span>.243656<span class="w">    </span><span class="m">3</span>.330000<span class="w">   </span><span class="m">22</span>.185450<span class="w">   </span><span class="m">16</span>.816000<span class="w">    </span><span class="m">0</span>.110000
+max<span class="w">      </span><span class="m">8</span>.110000<span class="w">    </span><span class="m">3</span>.869550<span class="w">    </span><span class="m">8</span>.145000<span class="w">   </span><span class="m">25</span>.362000<span class="w">   </span><span class="m">23</span>.528382<span class="w">    </span><span class="m">0</span>.400000
+Successfully<span class="w"> </span>calculate<span class="w"> </span>the<span class="w"> </span>pair-wise<span class="w"> </span>correlation<span class="w"> </span>coefficient<span class="w"> </span>among<span class="w"> </span>the<span class="w"> </span>selected<span class="w"> </span>columns.
+Save<span class="w"> </span>figure<span class="w"> </span><span class="s1">&#39;Correlation Plot&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\7</span><span class="m">4086</span><span class="se">\o</span>utput<span class="se">\i</span>mages<span class="se">\s</span>tatistic.
+Successfully<span class="w"> </span>draw<span class="w"> </span>the<span class="w"> </span>distribution<span class="w"> </span>plot<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>selected<span class="w"> </span>columns.
+Save<span class="w"> </span>figure<span class="w"> </span><span class="s1">&#39;Distribution Histogram&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\7</span><span class="m">4086</span><span class="se">\o</span>utput<span class="se">\i</span>mages<span class="se">\s</span>tatistic.
+Successfully<span class="w"> </span>draw<span class="w"> </span>the<span class="w"> </span>distribution<span class="w"> </span>plot<span class="w"> </span>after<span class="w"> </span>log<span class="w"> </span>transformation<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>selected<span class="w"> </span>columns.
+Save<span class="w"> </span>figure<span class="w"> </span><span class="s1">&#39;Distribution Histogram After Log Transformation&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\7</span><span class="m">4086</span><span class="se">\o</span>utput<span class="se">\i</span>mages<span class="se">\s</span>tatistic.
+<span class="o">(</span>Press<span class="w"> </span>Enter<span class="w"> </span>key<span class="w"> </span>to<span class="w"> </span>move<span class="w"> </span>forward.<span class="o">)</span>
+</pre></div>
+</div>
+</section>
+<section id="nan-value-process">
+<h2>NAN value process<a class="headerlink" href="#nan-value-process" title="Permalink to this heading">#</a></h2>
+<p>Check the NAN values would be helpful for later analysis. In geochemistrypi frame, this option is finished automatically.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-*-*-<span class="w"> </span>Imputation<span class="w"> </span>-*-*-
+Check<span class="w"> </span>which<span class="w"> </span>column<span class="w"> </span>has<span class="w"> </span>null<span class="w"> </span>values:
+--------------------
+AL2O3<span class="o">(</span>WT%<span class="o">)</span><span class="w">    </span>False
+CR2O3<span class="o">(</span>WT%<span class="o">)</span><span class="w">     </span>True
+FEOT<span class="o">(</span>WT%<span class="o">)</span><span class="w">     </span>False
+CAO<span class="o">(</span>WT%<span class="o">)</span><span class="w">      </span>False
+MGO<span class="o">(</span>WT%<span class="o">)</span><span class="w">      </span>False
+MNO<span class="o">(</span>WT%<span class="o">)</span><span class="w">      </span>False
+dtype:<span class="w"> </span>bool
+--------------------
+The<span class="w"> </span>ratio<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>null<span class="w"> </span>values<span class="w"> </span><span class="k">in</span><span class="w"> </span>each<span class="w"> </span>column:
+--------------------
+CR2O3<span class="o">(</span>WT%<span class="o">)</span><span class="w">    </span><span class="m">0</span>.100917
+AL2O3<span class="o">(</span>WT%<span class="o">)</span><span class="w">    </span><span class="m">0</span>.000000
+FEOT<span class="o">(</span>WT%<span class="o">)</span><span class="w">     </span><span class="m">0</span>.000000
+CAO<span class="o">(</span>WT%<span class="o">)</span><span class="w">      </span><span class="m">0</span>.000000
+MGO<span class="o">(</span>WT%<span class="o">)</span><span class="w">      </span><span class="m">0</span>.000000
+MNO<span class="o">(</span>WT%<span class="o">)</span><span class="w">      </span><span class="m">0</span>.000000
+dtype:<span class="w"> </span>float64
+--------------------
+</pre></div>
+</div>
+<p>Several strategies are offered for processing the missing values, including:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-*-*-<span class="w"> </span>Strategy<span class="w"> </span><span class="k">for</span><span class="w"> </span>Missing<span class="w"> </span>Values<span class="w"> </span>-*-*-
+<span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Mean
+<span class="m">2</span><span class="w"> </span>-<span class="w"> </span>Median
+<span class="m">3</span><span class="w"> </span>-<span class="w"> </span>Most<span class="w"> </span>Frequent
+Which<span class="w"> </span>strategy<span class="w"> </span><span class="k">do</span><span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>apply?
+</pre></div>
+</div>
+<p>We choose the mean number in this example and the input data be processed automatically as:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-*-*- Hypothesis Testing on Imputation Method -*-*-
+Null Hypothesis: The distributions of the data set before and after imputing remain the same.
+Thoughts: Check which column rejects null hypothesis.
+Statistics Test Method: Wilcoxon Test
+Significance Level:  0.05
+The number of iterations of Monte Carlo simulation:  100
+The size of the sample for each iteration (half of the whole data set):  54
+Average p-value:
+AL2O3(WT%) 0.0
+CR2O3(WT%) nan
+FEOT(WT%) 0.0
+CAO(WT%) 0.0
+MGO(WT%) 0.0
+MNO(WT%) 0.0
+Note: &#39;p-value = 0&#39; means imputation method doesn&#39;t apply to that column.
+The columns which rejects null hypothesis: None
+Successfully draw the respective probability plot (origin vs. impute) of the selected columns
+Save figure &#39;Probability Plot&#39; in C:\Users\74086\output\images\statistic.
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 109 entries, 0 to 108
+Data columns (total 6 columns):
+ #   Column      Non-Null Count  Dtype
+---  ------      --------------  -----
+ 0   AL2O3(WT%)  109 non-null    float64
+ 1   CR2O3(WT%)  109 non-null    float64
+ 2   FEOT(WT%)   109 non-null    float64
+ 3   CAO(WT%)    109 non-null    float64
+ 4   MGO(WT%)    109 non-null    float64
+ 5   MNO(WT%)    109 non-null    float64
+dtypes: float64(6)
+memory usage: 5.2 KB
+None
+Some basic statistic information of the designated data set:
+       AL2O3(WT%)  CR2O3(WT%)   FEOT(WT%)    CAO(WT%)    MGO(WT%)    MNO(WT%)
+count  109.000000  109.000000  109.000000  109.000000  109.000000  109.000000
+mean     4.554212    0.956426    2.962310   21.115756   16.178044    0.092087
+std      1.969756    0.524695    1.133967    1.964380    1.432886    0.054002
+min      0.230000    0.000000    1.371100   13.170000   12.170000    0.000000
+25%      3.110977    0.680000    2.350000   20.310000   15.300000    0.063075
+50%      4.720000    0.956426    2.690000   21.223500   15.920000    0.090000
+75%      6.233341    1.170000    3.330000   22.185450   16.816000    0.110000
+max      8.110000    3.869550    8.145000   25.362000   23.528382    0.40000
+</pre></div>
+</div>
+</section>
+<section id="feature-engineering">
+<h2>Feature engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this heading">#</a></h2>
+<p>The next step is the feature engineering options.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-*-*-<span class="w"> </span>Feature<span class="w"> </span>Engineering<span class="w"> </span>-*-*-
+The<span class="w"> </span>Selected<span class="w"> </span>Data<span class="w"> </span>Set:
+--------------------
+Index<span class="w"> </span>-<span class="w"> </span>Column<span class="w"> </span>Name
+<span class="m">1</span><span class="w"> </span>-<span class="w"> </span>AL2O3<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">2</span><span class="w"> </span>-<span class="w"> </span>CR2O3<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">3</span><span class="w"> </span>-<span class="w"> </span>FEOT<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">4</span><span class="w"> </span>-<span class="w"> </span>CAO<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">5</span><span class="w"> </span>-<span class="w"> </span>MGO<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">6</span><span class="w"> </span>-<span class="w"> </span>MNO<span class="o">(</span>WT%<span class="o">)</span>
+--------------------
+Feature<span class="w"> </span>Engineering<span class="w"> </span>Option:
+<span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Yes
+<span class="m">2</span><span class="w"> </span>-<span class="w"> </span>No
+</pre></div>
+</div>
+<p>Feature engineering options are essential for data analysis. We choose Yes and gain</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-*-*-<span class="w"> </span>Feature<span class="w"> </span>Engineering<span class="w"> </span>-*-*-
+The<span class="w"> </span>Selected<span class="w"> </span>Data<span class="w"> </span>Set:
+--------------------
+Index<span class="w"> </span>-<span class="w"> </span>Column<span class="w"> </span>Name
+<span class="m">1</span><span class="w"> </span>-<span class="w"> </span>AL2O3<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">2</span><span class="w"> </span>-<span class="w"> </span>CR2O3<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">3</span><span class="w"> </span>-<span class="w"> </span>FEOT<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">4</span><span class="w"> </span>-<span class="w"> </span>CAO<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">5</span><span class="w"> </span>-<span class="w"> </span>MGO<span class="o">(</span>WT%<span class="o">)</span>
+<span class="m">6</span><span class="w"> </span>-<span class="w"> </span>MNO<span class="o">(</span>WT%<span class="o">)</span>
+--------------------
+Feature<span class="w"> </span>Engineering<span class="w"> </span>Option:
+<span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Yes
+<span class="m">2</span><span class="w"> </span>-<span class="w"> </span>No
+<span class="o">(</span>Data<span class="o">)</span><span class="w"> </span>➜<span class="w"> </span>@Number:<span class="w"> </span><span class="m">1</span>
+Selected<span class="w"> </span>data<span class="w"> </span>set:
+a<span class="w"> </span>-<span class="w"> </span>AL2O3<span class="o">(</span>WT%<span class="o">)</span>
+b<span class="w"> </span>-<span class="w"> </span>CR2O3<span class="o">(</span>WT%<span class="o">)</span>
+c<span class="w"> </span>-<span class="w"> </span>FEOT<span class="o">(</span>WT%<span class="o">)</span>
+d<span class="w"> </span>-<span class="w"> </span>CAO<span class="o">(</span>WT%<span class="o">)</span>
+e<span class="w"> </span>-<span class="w"> </span>MGO<span class="o">(</span>WT%<span class="o">)</span>
+f<span class="w"> </span>-<span class="w"> </span>MNO<span class="o">(</span>WT%<span class="o">)</span>
+Name<span class="w"> </span>the<span class="w"> </span>constructed<span class="w"> </span>feature<span class="w"> </span><span class="o">(</span>column<span class="w"> </span>name<span class="o">)</span>:
+@input:
+Build<span class="w"> </span>up<span class="w"> </span>new<span class="w"> </span>feature<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>combination<span class="w"> </span>of<span class="w"> </span><span class="m">4</span><span class="w"> </span>basic<span class="w"> </span>arithmatic<span class="w"> </span>operator.
+Input<span class="w"> </span>example<span class="w"> </span><span class="m">1</span>:<span class="w"> </span>a<span class="w"> </span>*<span class="w"> </span>b<span class="w"> </span>-<span class="w"> </span>c
+--&gt;<span class="w"> </span>Step<span class="w"> </span><span class="m">1</span>:<span class="w"> </span>Multiply<span class="w"> </span>a<span class="w"> </span>column<span class="w"> </span>with<span class="w"> </span>b<span class="w"> </span>column<span class="p">;</span>
+--&gt;<span class="w"> </span>Step<span class="w"> </span><span class="m">2</span>:<span class="w"> </span>Subtract<span class="w"> </span>c<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>result<span class="w"> </span>of<span class="w"> </span>Step<span class="w"> </span><span class="m">1</span><span class="p">;</span>
+Input<span class="w"> </span>example<span class="w"> </span><span class="m">2</span>:<span class="w"> </span><span class="o">(</span>d<span class="w"> </span>+<span class="w"> </span><span class="m">5</span><span class="w"> </span>*<span class="w"> </span>f<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>g
+--&gt;<span class="w"> </span>Step<span class="w"> </span><span class="m">1</span>:<span class="w"> </span>multiply<span class="w"> </span><span class="m">5</span><span class="w"> </span>with<span class="w"> </span>f<span class="p">;</span>
+--&gt;<span class="w"> </span>Step<span class="w"> </span><span class="m">2</span>:<span class="w"> </span>Plus<span class="w"> </span>d<span class="w"> </span>column<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>result<span class="w"> </span>of<span class="w"> </span>Step<span class="w"> </span><span class="m">1</span><span class="p">;</span>
+--&gt;<span class="w"> </span>Step<span class="w"> </span><span class="m">3</span>:<span class="w"> </span>Divide<span class="w"> </span>the<span class="w"> </span>result<span class="w"> </span>of<span class="w"> </span>Step<span class="w"> </span><span class="m">1</span><span class="w"> </span>by<span class="w"> </span>g<span class="p">;</span>
+</pre></div>
+</div>
+<p>Considering actual need for constructing several new geochemical indexes. We can set up some new indexes. Here, we would set up a new index by <em>AL2O3/CAO</em> via keyboard options with <em>a/d</em>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Do<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span><span class="k">continue</span><span class="w"> </span>to<span class="w"> </span>construct<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>feature?
+<span class="m">1</span><span class="w"> </span>-<span class="w"> </span>Yes
+<span class="m">2</span><span class="w"> </span>-<span class="w"> </span>No
+<span class="o">(</span>Data<span class="o">)</span><span class="w"> </span>➜<span class="w"> </span>@Number:<span class="w"> </span><span class="m">2</span>
+Successfully<span class="w"> </span>store<span class="w"> </span><span class="s1">&#39;Data Before Splitting&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s1">&#39;Data Before Splitting.xlsx&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\7</span><span class="m">4086</span><span class="se">\o</span>utput<span class="se">\d</span>ata.
+Exit<span class="w"> </span>Feature<span class="w"> </span>Engineering<span class="w"> </span>Mode.
+</pre></div>
+</div>
+</section>
+<section id="pca">
+<h2>PCA<a class="headerlink" href="#pca" title="Permalink to this heading">#</a></h2>
+<p>Then we can start PCA by selecting Dimensional Reduction and Principal Component Analysis. The kept component number is a hyper-parameter needs to be decided and here we propose the number is 3. Some PCA information is shown on the window.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-*-*- Hyper-parameters Specification -*-*-
+Decide the component numbers to keep:
+(Model) ➜ @Number: 3
+*-**-* PCA is running ... *-**-*
+Expected Functionality:
++  Model Persistence
++  Principal Components
++  Explained Variance Ratio
++  Compositional Bi-plot
++  Compositional Tri-plot
+-----* Principal Components *-----
+Every column represents one principal component respectively.
+Every row represents how much that row feature contributes to each principal component respectively.
+The tabular data looks like in format: &#39;rows x columns = &#39;features x principal components&#39;.
+                 PC1       PC2       PC3
+AL2O3(WT%) -0.742029 -0.439057 -0.085773
+CR2O3(WT%) -0.007037  0.082531 -0.213232
+FEOT(WT%)  -0.173824  0.219858  0.937257
+CAO(WT%)    0.624609 -0.620584  0.200722
+MGO(WT%)    0.165265  0.605489 -0.168090
+MNO(WT%)   -0.003397  0.011160  0.012315
+           -0.040834 -0.014650 -0.005382
+-----* Explained Variance Ratio *-----
+[0.46679568 0.38306839 0.09102234]
+-----* 2 Dimensions Data Selection *-----
+The software is going to draw related 2d graphs.
+Currently, the data dimension is beyond 2 dimensions.
+Please choose 2 dimensions of the data below.
+1 - PC1
+2 - PC2
+3 - PC3
+Choose dimension - 1 data:
+</pre></div>
+</div>
+<p>By inputting different component numbers, results of PCA are obtained automatically.</p>
+<a class="reference external image-reference" href="https://github.com/ZJUEarthData/geochemistrypi/assets/66779478/68f31f92-a553-4b1c-b22f-89650614fd98"><img alt="pca.png" src="https://github.com/ZJUEarthData/geochemistrypi/assets/66779478/68f31f92-a553-4b1c-b22f-89650614fd98" /></a>
+<p><span class="raw-html-m2r"><font color=gray size=1><center>Figure 1 PCA Example</center></font></span></p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../Regression/Regression.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Regression</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../Classification/classification.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Classification</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Wenyu
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Decomposition</a><ul>
+<li><a class="reference internal" href="#principal-component-analysis-pca">Principal Component Analysis (PCA)</a></li>
+<li><a class="reference internal" href="#preparation">Preparation</a></li>
+<li><a class="reference internal" href="#nan-value-process">NAN value process</a></li>
+<li><a class="reference internal" href="#feature-engineering">Feature engineering</a></li>
+<li><a class="reference internal" href="#pca">PCA</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/furo.js"></script>
+    </body>
+</html>
