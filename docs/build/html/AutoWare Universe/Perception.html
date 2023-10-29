@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Welcome to Wenyu’s Online Notes" href="../index.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>Perception - Wenyu&#39;s Online Notes documentation</title>
+        <title>Yolo 模型训练 - Wenyu&#39;s Online Notes documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -116,7 +116,7 @@
 
 <div class="announcement">
   <aside class="announcement-content">
-     <em>More tutorial videos can be found on bilibili: ZJU_Earth_Data</em> 
+     <em>stay tuned</em> 
   </aside>
 </div>
 
@@ -140,7 +140,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -164,7 +164,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">AutoWare Universe</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Perception</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Yolo 模型训练</a></li>
 </ul>
 
 </div>
@@ -193,17 +193,117 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="perception">
-<h1>Perception<a class="headerlink" href="#perception" title="Permalink to this heading">#</a></h1>
-<p>test
-test
-test</p>
+          <section id="yolo">
+<h1>Yolo 模型训练<a class="headerlink" href="#yolo" title="Permalink to this heading">#</a></h1>
+<p>一. <strong>训练流程</strong></p>
+<ol class="arabic">
+<li><p><strong>数据准备</strong>：</p>
+<ul class="simple">
+<li><p>搜集你需要的图片，例如红绿灯、行人、车辆的图片。</p></li>
+<li><p>使用标注工具（例如<a class="reference external" href="https://github.com/tzutalin/labelImg">labelImg</a>）为图片中的对象进行标注。YOLOv5需要的是YOLO格式的标注文件，这意味着每张图片都会有一个对应的<code class="docutils literal notranslate"><span class="pre">.txt</span></code>文件，其中包含对象的类别和坐标。</p></li>
+</ul>
+</li>
+<li><p><strong>数据组织</strong>：</p>
+<ul class="simple">
+<li><p>将所有图片放在一个目录中，例如<code class="docutils literal notranslate"><span class="pre">images/</span></code>，并将所有的<code class="docutils literal notranslate"><span class="pre">.txt</span></code>标注文件放在另一个目录中，例如<code class="docutils literal notranslate"><span class="pre">labels/</span></code>。</p></li>
+<li><p>分割数据集为训练集和验证集。</p></li>
+</ul>
+</li>
+<li><p><strong>配置文件</strong>：</p>
+<ul>
+<li><p>创建一个<code class="docutils literal notranslate"><span class="pre">.yaml</span></code>文件，指定类别和数据的路径。例如<code class="docutils literal notranslate"><span class="pre">data.yaml</span></code>:
+.. code-block:: yaml</p>
+<blockquote>
+<div><p>train: path/to/train/images/
+val: path/to/val/images/
+nc: 3  # 类别数量，例如：红绿灯、行人、车辆
+names: [‘traffic_light’, ‘pedestrian’, ‘vehicle’]</p>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>安装依赖并克隆YOLOv5仓库</strong>：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ultralytics/yolov5.git
+<span class="nb">cd</span><span class="w"> </span>yolov5
+pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</li>
+<li><p><strong>训练模型</strong>：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">   </span>python<span class="w"> </span>train.py<span class="w"> </span>--img<span class="w"> </span><span class="m">640</span><span class="w"> </span>--batch<span class="w"> </span><span class="m">16</span><span class="w"> </span>--epochs<span class="w"> </span><span class="m">100</span><span class="w"> </span>--data<span class="w"> </span>data.yaml<span class="w"> </span>--cfg<span class="w"> </span>models/yolov5s.yaml<span class="w"> </span>--weights<span class="w"> </span>yolov5s.pt
+
+这里用的是YOLOv5的小模型配置<span class="se">\ </span><span class="sb">``</span>yolov5s.yaml<span class="sb">``</span><span class="se">\ </span>和预训练权重<span class="se">\ </span><span class="sb">``</span>yolov5s.pt<span class="sb">``</span><span class="se">\ </span>。你可以根据需要选择其他模型配置。
+</pre></div>
+</div>
+</li>
+<li><dl class="simple">
+<dt><strong>评估模型</strong>：</dt><dd><p>YOLOv5的训练脚本在训练结束后会自动评估模型。你可以查看<code class="docutils literal notranslate"><span class="pre">runs/train/exp</span></code>目录下的结果，其中包括了损失、准确率、混淆矩阵等信息。</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>使用训练好的模型进行推断</strong>：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>detect.py<span class="w"> </span>--source<span class="w"> </span>path/to/test/images/<span class="w"> </span>--weights<span class="w"> </span>runs/train/exp/weights/best.pt<span class="w"> </span>--conf<span class="w"> </span><span class="m">0</span>.4
+</pre></div>
+</div>
+</li>
+<li><p><strong>优化</strong>：</p>
+<ul class="simple">
+<li><p>如果模型的性能不理想，你可以尝试更多的数据增强、更长的训练周期、使用更大的模型配置等方法进行优化。</p></li>
+</ul>
+</li>
+</ol>
+<p>这只是一个基本的指南，根据你的具体需求和数据情况，可能需要进行相应的调整。</p>
+<section id="id1">
+<h2>开源数据集<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>以下是一些包括红绿灯、车道线、行人和斑马线的标注的公开数据集（for research purpose only）：</p>
+<ol class="arabic simple">
+<li><p><strong>Cityscapes Dataset</strong>: 这是一个大型的城市场景数据集，其中包括车道线、行人、车辆等多个类别的标注。它包括精细的语义分割标注，但需要注意的是，它不提供红绿灯的实例级别标注。</p></li>
+<li><p><strong>Berkeley DeepDrive (BDD100K) Dataset</strong>: 这是一个非常大的驾驶相关数据集，其中包括多个类别，如车道线、行人、车辆等。它为图像提供了边界框和语义分割标注。</p></li>
+<li><p><strong>LISA Traffic Light Dataset</strong>: 这是一个专门用于红绿灯检测的数据集。</p></li>
+<li><p><strong>Tusimple Lane Detection Challenge</strong>: 这是一个专门用于车道线检测的数据集。</p></li>
+<li><p><strong>Apolloscape</strong>: 该数据集包括多种驾驶相关的任务，其中包括车道线和语义分割。</p></li>
+<li><p><strong>Mapillary Vistas Dataset</strong>: 这是一个街景数据集，其中包括多个类别的标注，包括行人、车辆、红绿灯和斑马线。</p></li>
+</ol>
+<p>以下是这些数据集的官方链接：</p>
+<ol class="arabic simple">
+<li><p><strong>Cityscapes Dataset</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.cityscapes-dataset.com/">Cityscapes Dataset Official Link</a></p></li>
+</ul>
+</li>
+<li><p><strong>Berkeley DeepDrive (BDD100K) Dataset</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://bdd-data.berkeley.edu/">BDD100K Official Link</a></p></li>
+</ul>
+</li>
+<li><p><strong>LISA Traffic Light Dataset</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://cvrr.ucsd.edu/LISA/lisa-traffic-sign-dataset.html">LISA Dataset Official Link</a></p></li>
+</ul>
+</li>
+<li><p><strong>Tusimple Lane Detection Challenge</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://benchmark.tusimple.ai/#/">TuSimple Dataset Official Link</a></p></li>
+</ul>
+</li>
+<li><p><strong>Apolloscape</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://apolloscape.auto/">Apolloscape Official Link</a></p></li>
+</ul>
+</li>
+<li><p><strong>Mapillary Vistas Dataset</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.mapillary.com/dataset/vistas">Mapillary Vistas Dataset Official Link</a></p></li>
+</ul>
+</li>
+</ol>
+</section>
 </section>
 
         </article>
@@ -241,8 +341,27 @@ test</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Yolo 模型训练</a><ul>
+<li><a class="reference internal" href="#id1">开源数据集</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

@@ -40,7 +40,7 @@ html_theme_options = {
     "top_of_page_button": "edit",
     "sidebar_hide_name": True,
     "navigation_with_keys": True,
-    "announcement": "<em>More tutorial videos can be found on bilibili: ZJU_Earth_Data</em>",
+    "announcement": "<em>stay tuned</em>",
     "light_css_variables": {
         "color-brand-primary": "blue",
         # "color-brand-content": "brown",
