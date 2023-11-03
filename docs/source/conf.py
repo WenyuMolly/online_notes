@@ -49,7 +49,7 @@ html_theme_options = {
 }
 
 
-html_logo = "https://th.bing.com/th/id/OIP.2Y3bXt8L-VFx5fljAoe5ZwHaNK?w=187&h=333&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+html_logo = "https://user-images.githubusercontent.com/66779478/280281787-b5893a49-3214-4d42-8c86-e759837f3116.jpg"
 
 source_suffix = [".rst", ".md"]
 
