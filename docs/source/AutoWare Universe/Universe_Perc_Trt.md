@@ -15,3 +15,48 @@
     <img src="https://user-images.githubusercontent.com/66779478/280275361-155fc03e-cab3-4630-80e7-959aa3aa998e.png">
     </p> 
 
+# 二、节点初始化的参数
+
+- 有以下一堆参数
+    <p align="center">
+    <img src="https://user-images.githubusercontent.com/66779478/280290067-7cff3015-a3ed-46d0-bb72-6d048d4d591b.png">
+    </p> 
+
+1. **onnx_file**: 这是YOLO模型的ONNX文件路径。ONNX是一个开放格式，用于存储训练好的深度学习模型，可以跨多种框架使用。这里的路径是模型文件的位置，TensorRT可以使用这个文件来构建优化后的推理引擎。
+
+2. **engine_file**: 这是TensorRT引擎文件路径。如果已经有了优化后的TensorRT引擎文件，就可以直接加载这个文件，避免重复从ONNX模型构建引擎，节省时间。
+
+3. **label_file**: 标签文件的路径，这个文件包含了类别标签，用于将模型输出的索引映射到实际的物体类别名称。
+
+4. **calib_image_directory**: 用于INT8量化校准的图像目录。当使用INT8模式时，需要这些图像来优化模型以在推理时减少精度损失。
+
+5. **calib_cache_file**: 校准缓存文件的路径，这是TensorRT在执行INT8校准时使用的文件，存储了校准数据，用以加速后续的校准过程。
+
+6. **mode**: 这是运行模式，通常为"FP32", "FP16", 或 "INT8"，指定TensorRT优化后的引擎应该使用的精度。FP32是单精度浮点数，FP16是半精度浮点数，而INT8是8位整数。
+
+7. **gpu_id**: 指定用于推理的GPU设备ID。如果有多个GPU，可以通过这个参数指定哪个GPU用于运算。
+
+8. **num_anchors**: YOLO模型使用的锚点数量。锚点是预定义的框，用于检测过程中的边界框。
+
+9. **anchors**: 锚点的尺寸，是一个浮点数的向量，表示每个锚点的宽度和高度。
+
+10. **scale_x_y**: YOLO v4模型中一个新特性的缩放因子，用于改变锚点预测的框。
+
+11. **score_thresh**: 得分阈值，用于过滤掉得分较低的预测，降低假阳性。
+
+12. **iou_thresh**: 交并比阈值，用于非最大抑制（NMS），以去除重叠较多的冗余框。
+
+13. **detections_per_im**: 每张图像的最大检测次数。
+
+14. **use_darknet_layer**: 一个布尔值，指定是否使用YOLO的Darknet层次结构。
+
+15. **ignore_thresh**: 忽略阈值，用于过滤YOLO模型中的某些预测。
+
+# 三、回调函数
+
+
+
+
+# 四、问题
+
+1. calib_image_directory是用于INT8量化校准的图像目录。当使用FP32模式时，还需要这个量化校准的图像吗？

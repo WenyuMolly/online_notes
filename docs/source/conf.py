@@ -11,7 +11,7 @@ import sys
 
 import sphinx_rtd_theme
 
-project = "Wenyu's Online Notes"
+project = "Wenyu's Notes"
 copyright = "2023, Wenyu"
 author = "Wenyu"
 # release = 'v0.1.0'
