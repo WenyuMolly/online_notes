@@ -3,13 +3,13 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="YoloV5 模型训练" href="../Yolo/Model_Training.html" /><link rel="prev" title="Welcome to Wenyu’s Online Notes" href="../index.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>Installation - Wenyu&#39;s Online Notes documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+        <title>tensorrt_yolo_node - Wenyu&#39;s Online Notes documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -129,7 +129,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Wenyu's Online Notes  documentation</div></a>
+      <a href="../index.html"><div class="brand">Wenyu's Online Notes  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -149,26 +149,26 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="https://th.bing.com/th/id/OIP.2Y3bXt8L-VFx5fljAoe5ZwHaNK?w=187&h=333&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Logo"/>
   </div>
   
   
-</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">AutoWare Universe</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="AutoWare%20Universe/Universe_Perc_Trt.html">tensorrt_yolo_node</a></li>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">tensorrt_yolo_node</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Yolo相关</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Yolo/Model_Training.html">YoloV5 模型训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Yolo/Model_Training.html">YoloV5 模型训练</a></li>
 </ul>
 
 </div>
@@ -203,75 +203,74 @@
           </label>
         </div>
         <article role="main">
-          <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h1>
-<p>Requirements: Python 3.9+</p>
-<p><strong>Note</strong>: You must have Python 3.9+ installed on your computer to use the software.</p>
-<p><span class="raw-html-m2r"><br /></span></p>
-<section id="check-environment">
-<h2>1.1 Check Environment<a class="headerlink" href="#check-environment" title="Permalink to this heading">#</a></h2>
-<p>You need to ensure that pip is installed.
-You can view it by typing instructions on the command line.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip --version
+          <section id="tensorrt-yolo-node">
+<h1>tensorrt_yolo_node<a class="headerlink" href="#tensorrt-yolo-node" title="Permalink to this heading">#</a></h1>
+<section id="topic">
+<h2>一、收发topic<a class="headerlink" href="#topic" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><strong>该节点订阅topic</strong></p>
+<ul>
+<li><p>“in/image”</p>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/66779478/280273209-b3041787-91c6-4324-8358-4c21b40eb76c.png">
+</p></li>
+</ul>
+</li>
+<li><p><strong>该节点发出去的topic</strong></p>
+<ul>
+<li><p>“out/image” -可视化</p></li>
+<li><p>“out/objects” -模型推理结果</p>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/66779478/280275361-155fc03e-cab3-4630-80e7-959aa3aa998e.png">
+</p></li>
+</ul>
+</li>
+<li><p><strong>数据组织</strong>：</p>
+<ul>
+<li><p>将所有图片放在一个目录中，例如<code class="docutils literal notranslate"><span class="pre">images/</span></code>，并将所有的<code class="docutils literal notranslate"><span class="pre">.txt</span></code>标注文件放在另一个目录中，例如<code class="docutils literal notranslate"><span class="pre">labels/</span></code>。</p></li>
+<li><p>分割数据集为训练集和验证集。</p></li>
+<li><p>创建一个<code class="docutils literal notranslate"><span class="pre">.yaml</span></code>文件，指定类别和数据的路径。例如<code class="docutils literal notranslate"><span class="pre">data.yaml</span></code>:
+.. code-block:: yaml</p>
+<blockquote>
+<div><p>train: path/to/train/images/
+val: path/to/val/images/
+nc: 3  # 类别数量，例如：红绿灯、行人、车辆
+names: [‘traffic_light’, ‘pedestrian’, ‘vehicle’]</p>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>安装依赖并克隆YOLOv5仓库</strong>：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ultralytics/yolov5.git
+<span class="nb">cd</span><span class="w"> </span>yolov5
+pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </pre></div>
 </div>
-<p><strong>Note</strong>: <strong>$</strong> refers to the command line interface. Don’t copy <strong>$</strong>.  The same as below.</p>
-<p><span class="raw-html-m2r"><br /></span></p>
-</section>
-<section id="install-geochemistrypi-package">
-<h2>1.2 Install <code class="docutils literal notranslate"><span class="pre">Geochemistrypi</span></code> package<a class="headerlink" href="#install-geochemistrypi-package" title="Permalink to this heading">#</a></h2>
-<section id="quick-install">
-<h3>1.2.1 Quick Install<a class="headerlink" href="#quick-install" title="Permalink to this heading">#</a></h3>
-<p>One instruction to download our software on command line, such as Terminal on macOS, CMD on Windows.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install geochemistrypi
+</li>
+<li><p><strong>训练模型</strong>：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">   </span>python<span class="w"> </span>train.py<span class="w"> </span>--img<span class="w"> </span><span class="m">640</span><span class="w"> </span>--batch<span class="w"> </span><span class="m">16</span><span class="w"> </span>--epochs<span class="w"> </span><span class="m">100</span><span class="w"> </span>--data<span class="w"> </span>data.yaml<span class="w"> </span>--cfg<span class="w"> </span>models/yolov5s.yaml<span class="w"> </span>--weights<span class="w"> </span>yolov5s.pt
+
+这里用的是YOLOv5的小模型配置<span class="se">\ </span><span class="sb">``</span>yolov5s.yaml<span class="sb">``</span><span class="se">\ </span>和预训练权重<span class="se">\ </span><span class="sb">``</span>yolov5s.pt<span class="sb">``</span><span class="se">\ </span>。你可以根据需要选择其他模型配置。
 </pre></div>
 </div>
-<p>The beta version runs on MacOS, Windows or Linux. Make sure that your network is stable while downloading.</p>
-</section>
-<section id="advanced-install">
-<h3>1.2.2 Advanced Install<a class="headerlink" href="#advanced-install" title="Permalink to this heading">#</a></h3>
-<p>It is highly recommended downloading in an isolated virtual python environment, which prevents messing up your system python packages.</p>
-<p><strong>Step 1:</strong> Create an virtual environment</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m venv my_virtual_environment_name
+</li>
+<li><dl class="simple">
+<dt><strong>评估模型</strong>：</dt><dd><p>YOLOv5的训练脚本在训练结束后会自动评估模型。你可以查看<code class="docutils literal notranslate"><span class="pre">runs/train/exp</span></code>目录下的结果，其中包括了损失、准确率、混淆矩阵等信息。</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>使用训练好的模型进行推断</strong>：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>detect.py<span class="w"> </span>--source<span class="w"> </span>path/to/test/images/<span class="w"> </span>--weights<span class="w"> </span>runs/train/exp/weights/best.pt<span class="w"> </span>--conf<span class="w"> </span><span class="m">0</span>.4
 </pre></div>
 </div>
-<p>Note: The only element to change is <a href="#id1"><span class="problematic" id="id2">**</span></a><em>my_virtual_environment_name</em><a href="#id3"><span class="problematic" id="id4">**</span></a>. (You need to remember the name of your virtual environment so you can use it next time.)
-If <a href="#id5"><span class="problematic" id="id6">**</span></a><em>python</em>** fails, try with <a href="#id7"><span class="problematic" id="id8">**</span></a><em>python3</em><a href="#id9"><span class="problematic" id="id10">**</span></a>.</p>
-<p>The instruction above will create an virtual environment on the current directory.</p>
-<p><strong>Step 2:</strong> Activate the virtual environment</p>
-<ol class="arabic simple">
-<li><p>Operating System: macOS or Linux</p></li>
+</li>
+<li><p><strong>优化</strong>：</p>
+<ul class="simple">
+<li><p>如果模型的性能不理想，你可以尝试更多的数据增强、更长的训练周期、使用更大的模型配置等方法进行优化。</p></li>
+</ul>
+</li>
 </ol>
-<p>In the same directory, run this instruction:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source my_virtual_environment_name/bin/activate
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
-<li><p>Operating System: Windows</p></li>
-</ol>
-<p>In the same directory, run this instruction:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ my_virtual_environment_name\Scripts\activate.bat
-</pre></div>
-</div>
-<p><strong>Step 3:</strong> Download our software</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m pip install geochemistrypi
-</pre></div>
-</div>
-<p>Make sure that your network is stable while downloading.</p>
-<p>In two methods, if you fail to download, please refer to part 4 &lt;bug report&amp;gt; .</p>
-<p><span class="raw-html-m2r"><br /></span></p>
-</section>
-</section>
-<section id="how-to-invoke-geochemistrypi-package-and-start-data-mining-on-your-terminal">
-<h2>1.3 How to invoke <code class="docutils literal notranslate"><span class="pre">Geochemistrypi</span></code> package and start data-mining on your terminal<a class="headerlink" href="#how-to-invoke-geochemistrypi-package-and-start-data-mining-on-your-terminal" title="Permalink to this heading">#</a></h2>
-<p>After installing <code class="docutils literal notranslate"><span class="pre">Geochemistrypi</span></code> package into your environment, you can invoke the package and enter the data-mining interface by simply running:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ geochemistrypi data-mining #loading the testing dataset provided by us
-</pre></div>
-</div>
-<p>Note that if you want to run your own dataset, run</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ geochemistrypi data-mining --data YOURDATA.xlsx #YOURDATA should be replaced by the file name of your dataset
-</pre></div>
-</div>
+<p>这只是一个基本的指南，根据你的具体需求和数据情况，可能需要进行相应的调整。</p>
 </section>
 </section>
 
@@ -280,8 +279,26 @@ If <a href="#id5"><span class="problematic" id="id6">**</span></a><em>python</em
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="../Yolo/Model_Training.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">YoloV5 模型训练</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -312,14 +329,8 @@ If <a href="#id5"><span class="problematic" id="id6">**</span></a><em>python</em
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Installation</a><ul>
-<li><a class="reference internal" href="#check-environment">1.1 Check Environment</a></li>
-<li><a class="reference internal" href="#install-geochemistrypi-package">1.2 Install <code class="docutils literal notranslate"><span class="pre">Geochemistrypi</span></code> package</a><ul>
-<li><a class="reference internal" href="#quick-install">1.2.1 Quick Install</a></li>
-<li><a class="reference internal" href="#advanced-install">1.2.2 Advanced Install</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#how-to-invoke-geochemistrypi-package-and-start-data-mining-on-your-terminal">1.3 How to invoke <code class="docutils literal notranslate"><span class="pre">Geochemistrypi</span></code> package and start data-mining on your terminal</a></li>
+<li><a class="reference internal" href="#">tensorrt_yolo_node</a><ul>
+<li><a class="reference internal" href="#topic">一、收发topic</a></li>
 </ul>
 </li>
 </ul>
@@ -331,9 +342,9 @@ If <a href="#id5"><span class="problematic" id="id6">**</span></a><em>python</em
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/scripts/furo.js"></script>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
     </body>
 </html>

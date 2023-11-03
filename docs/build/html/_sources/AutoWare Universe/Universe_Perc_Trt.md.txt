@@ -1,0 +1,54 @@
+### tensorrt_yolo_node
+
+# 一、收发topic
+
+1. **该节点订阅topic**
+    - "in/image"
+    <p align="center">
+    <img src="https://user-images.githubusercontent.com/66779478/280273209-b3041787-91c6-4324-8358-4c21b40eb76c.png">
+    </p>   
+    
+2. **该节点发出去的topic**
+    - "out/image" -可视化
+    - "out/objects" -模型推理结果
+    <p align="center">
+    <img src="https://user-images.githubusercontent.com/66779478/280275361-155fc03e-cab3-4630-80e7-959aa3aa998e.png">
+    </p> 
+
+2. **数据组织**：
+    - 将所有图片放在一个目录中，例如`images/`，并将所有的`.txt`标注文件放在另一个目录中，例如`labels/`。
+    - 分割数据集为训练集和验证集。
+    - 创建一个`.yaml`文件，指定类别和数据的路径。例如`data.yaml`:
+      ```yaml
+      train: path/to/train/images/
+      val: path/to/val/images/
+      nc: 3  # 类别数量，例如：红绿灯、行人、车辆
+      names: ['traffic_light', 'pedestrian', 'vehicle']
+      ```
+
+4. **安装依赖并克隆YOLOv5仓库**：
+    ```bash
+    git clone https://github.com/ultralytics/yolov5.git
+    cd yolov5
+    pip install -U -r requirements.txt
+    ```
+
+5. **训练模型**：
+    ```bash
+    python train.py --img 640 --batch 16 --epochs 100 --data data.yaml --cfg models/yolov5s.yaml --weights yolov5s.pt
+    ```
+    这里用的是YOLOv5的小模型配置`yolov5s.yaml`和预训练权重`yolov5s.pt`。你可以根据需要选择其他模型配置。
+
+6. **评估模型**：
+    YOLOv5的训练脚本在训练结束后会自动评估模型。你可以查看`runs/train/exp`目录下的结果，其中包括了损失、准确率、混淆矩阵等信息。
+
+7. **使用训练好的模型进行推断**：
+    ```bash
+    python detect.py --source path/to/test/images/ --weights runs/train/exp/weights/best.pt --conf 0.4
+    ```
+
+8. **优化**：
+    - 如果模型的性能不理想，你可以尝试更多的数据增强、更长的训练周期、使用更大的模型配置等方法进行优化。
+
+这只是一个基本的指南，根据你的具体需求和数据情况，可能需要进行相应的调整。
+

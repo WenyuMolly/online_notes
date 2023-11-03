@@ -1,0 +1,412 @@
+<!doctype html>
+<html class="no-js" lang="EN">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="tensorrt_yolo_node" href="../AutoWare%20Universe/Universe_Perc_Trt.html" />
+
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+        <title>YoloV5 模型训练 - Wenyu&#39;s Online Notes documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: blue;
+  --color-admonition-background: orange;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     <em>stay tuned</em> 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Wenyu's Online Notes  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="https://th.bing.com/th/id/OIP.2Y3bXt8L-VFx5fljAoe5ZwHaNK?w=187&h=333&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">AutoWare Universe</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AutoWare%20Universe/Universe_Perc_Trt.html">tensorrt_yolo_node</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Yolo相关</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">YoloV5 模型训练</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="yolov5">
+<h1>YoloV5 模型训练<a class="headerlink" href="#yolov5" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2>一、环境准备<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><strong>检查显卡驱动</strong>：
+.. code-block:: bash</p>
+<blockquote>
+<div><p>nvidia smi</p>
+</div></blockquote>
+<ul>
+<li><p>如果显示“Command ‘nvidia-smi’ not found, …”，说明没有安装显卡驱动</p></li>
+<li><p>点击左下角的“9个小方块”图标，然后搜索“软件和更新”（Software &amp; Update），查看下面的附加驱动（Additional Drivers），选择一个进行安装（这步选择哪个可能需要进一步结合具体情况选择，我的是RTX3090+ubuntu20.04，选择了最前面的470）</p></li>
+<li><p>重启，然后再运行“nvidia-smi”指令来看驱动是否安装成功 (有如下图返回一个表格就代表驱动成功了)，且右上角后面跟着推荐的CUDA版本号。</p>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/66779478/280258406-c8908bcd-766a-44ee-92e0-57e59797bcfe.png">
+</p></li>
+</ul>
+</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>- 可能需要的其他知识：
+- 如何看显卡型号
+
+```bash
+lspci | grep VGA
+```
+- NVIDIA 后面会跟着ID，可以去nvidia官网查ID对应的显卡型号
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p><strong>安装CUDA</strong></p></li>
+</ol>
+</section>
+<section id="id2">
+<h2>二、训练流程<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><strong>数据准备</strong>：</p>
+<ul class="simple">
+<li><p>搜集需要的图片，例如红绿灯、行人、车辆的图片。</p></li>
+<li><p>使用标注工具（例如<a class="reference external" href="https://github.com/tzutalin/labelImg">labelImg</a>）为图片中的对象进行标注。YOLOv5需要的是YOLO格式的标注文件，即每张图片都会有一个对应的<code class="docutils literal notranslate"><span class="pre">.txt</span></code>文件，其中包含对象的类别和坐标。</p></li>
+</ul>
+</li>
+<li><p><strong>数据组织</strong>：</p>
+<ul class="simple">
+<li><p>将所有图片放在一个目录中，例如<code class="docutils literal notranslate"><span class="pre">images/</span></code>，并将所有的<code class="docutils literal notranslate"><span class="pre">.txt</span></code>标注文件放在另一个目录中，例如<code class="docutils literal notranslate"><span class="pre">labels/</span></code>。</p></li>
+<li><p>分割数据集为训练集和验证集。</p></li>
+</ul>
+</li>
+<li><p><strong>配置文件</strong>：</p>
+<ul>
+<li><p>创建一个<code class="docutils literal notranslate"><span class="pre">.yaml</span></code>文件，指定类别和数据的路径。例如<code class="docutils literal notranslate"><span class="pre">data.yaml</span></code>:
+.. code-block:: yaml</p>
+<blockquote>
+<div><p>train: path/to/train/images/
+val: path/to/val/images/
+nc: 3  # 类别数量，例如：红绿灯、行人、车辆
+names: [‘traffic_light’, ‘pedestrian’, ‘vehicle’]</p>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>安装依赖并克隆YOLOv5仓库</strong>：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ultralytics/yolov5.git
+<span class="nb">cd</span><span class="w"> </span>yolov5
+pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</li>
+<li><p><strong>训练模型</strong>：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">   </span>python<span class="w"> </span>train.py<span class="w"> </span>--img<span class="w"> </span><span class="m">640</span><span class="w"> </span>--batch<span class="w"> </span><span class="m">16</span><span class="w"> </span>--epochs<span class="w"> </span><span class="m">100</span><span class="w"> </span>--data<span class="w"> </span>data.yaml<span class="w"> </span>--cfg<span class="w"> </span>models/yolov5s.yaml<span class="w"> </span>--weights<span class="w"> </span>yolov5s.pt
+
+这里用的是YOLOv5的小模型配置<span class="se">\ </span><span class="sb">``</span>yolov5s.yaml<span class="sb">``</span><span class="se">\ </span>和预训练权重<span class="se">\ </span><span class="sb">``</span>yolov5s.pt<span class="sb">``</span><span class="se">\ </span>。你可以根据需要选择其他模型配置。
+</pre></div>
+</div>
+</li>
+<li><dl class="simple">
+<dt><strong>评估模型</strong>：</dt><dd><p>YOLOv5的训练脚本在训练结束后会自动评估模型。可以查看<code class="docutils literal notranslate"><span class="pre">runs/train/exp</span></code>目录下的结果，其中包括了损失、准确率、混淆矩阵等信息。</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>使用训练好的模型进行推断</strong>：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>detect.py<span class="w"> </span>--source<span class="w"> </span>path/to/test/images/<span class="w"> </span>--weights<span class="w"> </span>runs/train/exp/weights/best.pt<span class="w"> </span>--conf<span class="w"> </span><span class="m">0</span>.4
+</pre></div>
+</div>
+</li>
+<li><p><strong>优化</strong>：</p>
+<ul class="simple">
+<li><p>如果模型的性能不理想，可以尝试更多的数据增强、更长的训练周期、使用更大的模型配置等方法进行优化。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id3">
+<h2>三、开源数据集<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>以下是一些包括红绿灯、车道线、行人和斑马线的标注的公开数据集（for research purpose only）：</p>
+<ol class="arabic simple">
+<li><p><strong>Cityscapes Dataset</strong>: 这是一个大型的城市场景数据集，其中包括车道线、行人、车辆等多个类别的标注。它包括精细的语义分割标注，但需要注意的是，它不提供红绿灯的实例级别标注。</p></li>
+<li><p><strong>Berkeley DeepDrive (BDD100K) Dataset</strong>: 这是一个非常大的驾驶相关数据集，其中包括多个类别，如车道线、行人、车辆等。它为图像提供了边界框和语义分割标注。</p></li>
+<li><p><strong>LISA Traffic Light Dataset</strong>: 这是一个专门用于红绿灯检测的数据集。</p></li>
+<li><p><strong>Tusimple Lane Detection Challenge</strong>: 这是一个专门用于车道线检测的数据集。</p></li>
+<li><p><strong>Apolloscape</strong>: 该数据集包括多种驾驶相关的任务，其中包括车道线和语义分割。</p></li>
+<li><p><strong>Mapillary Vistas Dataset</strong>: 这是一个街景数据集，其中包括多个类别的标注，包括行人、车辆、红绿灯和斑马线。</p></li>
+</ol>
+<p>以下是这些数据集的官方链接：</p>
+<ol class="arabic simple">
+<li><p><strong>Cityscapes Dataset</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.cityscapes-dataset.com/">Cityscapes Dataset Official Link</a></p></li>
+</ul>
+</li>
+<li><p><strong>Berkeley DeepDrive (BDD100K) Dataset</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://bdd-data.berkeley.edu/">BDD100K Official Link</a></p></li>
+</ul>
+</li>
+<li><p><strong>LISA Traffic Light Dataset</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://cvrr.ucsd.edu/LISA/lisa-traffic-sign-dataset.html">LISA Dataset Official Link</a></p></li>
+</ul>
+</li>
+<li><p><strong>Tusimple Lane Detection Challenge</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://benchmark.tusimple.ai/#/">TuSimple Dataset Official Link</a></p></li>
+</ul>
+</li>
+<li><p><strong>Apolloscape</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://apolloscape.auto/">Apolloscape Official Link</a></p></li>
+</ul>
+</li>
+<li><p><strong>Mapillary Vistas Dataset</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.mapillary.com/dataset/vistas">Mapillary Vistas Dataset Official Link</a></p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="../AutoWare%20Universe/Universe_Perc_Trt.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">tensorrt_yolo_node</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Wenyu
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">YoloV5 模型训练</a><ul>
+<li><a class="reference internal" href="#id1">一、环境准备</a></li>
+<li><a class="reference internal" href="#id2">二、训练流程</a></li>
+<li><a class="reference internal" href="#id3">三、开源数据集</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
+</html>

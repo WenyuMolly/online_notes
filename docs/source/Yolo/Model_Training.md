@@ -1,17 +1,22 @@
-## Yolo V5 模型训练
+### YoloV5 模型训练
 
-一. **环境准备**
+# 一、环境准备
+
 1. **检查显卡驱动**：
     ```bash
     nvidia smi
     ```
     - 如果显示“Command 'nvidia-smi' not found, ...”，说明没有安装显卡驱动
     - 点击左下角的“9个小方块”图标，然后搜索“软件和更新”（Software & Update），查看下面的附加驱动（Additional Drivers），选择一个进行安装（这步选择哪个可能需要进一步结合具体情况选择，我的是RTX3090+ubuntu20.04，选择了最前面的470）
-    - 重启，然后再运行“nvidia-smi”指令来看驱动是否安装成功 (有返回一个表格就代表成功了)。
+    - 重启，然后再运行“nvidia-smi”指令来看驱动是否安装成功 (有如下图返回一个表格就代表驱动成功了)，且右上角后面跟着推荐的CUDA版本号。
+    <p align="center">
+    <img src="https://user-images.githubusercontent.com/66779478/280258406-c8908bcd-766a-44ee-92e0-57e59797bcfe.png">
+    </p>   
     
 
-    可能需要的其他知识：
+    - 可能需要的其他知识：
     - 如何看显卡型号
+
     ```bash
     lspci | grep VGA
     ```
@@ -20,7 +25,7 @@
 2. **安装CUDA**
 
 
-二. **训练流程**
+# 二、训练流程
 
 1. **数据准备**：
     - 搜集需要的图片，例如红绿灯、行人、车辆的图片。
@@ -40,6 +45,7 @@
       ```
 
 4. **安装依赖并克隆YOLOv5仓库**：
+
     ```bash
     git clone https://github.com/ultralytics/yolov5.git
     cd yolov5
@@ -47,13 +53,14 @@
     ```
 
 5. **训练模型**：
+
     ```bash
     python train.py --img 640 --batch 16 --epochs 100 --data data.yaml --cfg models/yolov5s.yaml --weights yolov5s.pt
     ```
     这里用的是YOLOv5的小模型配置`yolov5s.yaml`和预训练权重`yolov5s.pt`。你可以根据需要选择其他模型配置。
 
 6. **评估模型**：
-    YOLOv5的训练脚本在训练结束后会自动评估模型。你可以查看`runs/train/exp`目录下的结果，其中包括了损失、准确率、混淆矩阵等信息。
+    YOLOv5的训练脚本在训练结束后会自动评估模型。可以查看`runs/train/exp`目录下的结果，其中包括了损失、准确率、混淆矩阵等信息。
 
 7. **使用训练好的模型进行推断**：
     ```bash
@@ -61,11 +68,11 @@
     ```
 
 8. **优化**：
-    - 如果模型的性能不理想，你可以尝试更多的数据增强、更长的训练周期、使用更大的模型配置等方法进行优化。
+    - 如果模型的性能不理想，可以尝试更多的数据增强、更长的训练周期、使用更大的模型配置等方法进行优化。
 
 
 
-### 开源数据集
+# 三、开源数据集
 
 以下是一些包括红绿灯、车道线、行人和斑马线的标注的公开数据集（for research purpose only）：
 

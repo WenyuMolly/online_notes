@@ -5,30 +5,18 @@ Welcome to Wenyu's Online Notes
    :maxdepth: 1
    :caption: AutoWare Universe
 
-   AutoWare Universe/Perception.md
-
+   AutoWare Universe/Universe_Perc_Trt.md
 
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Developer
+   :maxdepth: 1
+   :caption: Yolo相关
 
-   Developer/Deployment.md
-   Developer/Git.md
-   Developer/Docker Deployment.md
-   Developer/Developer Guide/Developer Manual.md
-   Developer/Algorithm Functionality Addition Procedure_geochemistrypi 020_CN/data_mining_geochemistrypi020.md
-   Developer/Developer Docs link.md
+   Yolo/Model_Training.md
 
-.. toctree::
-   :maxdepth: 2
-   :caption: API
-
-   python_apis/api.rst
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
