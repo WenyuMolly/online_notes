@@ -1,4 +1,4 @@
-### tensorrt_yolo_node
+### traffic_light_map_based_detector
 
 # 一、收发topic
 
@@ -46,7 +46,7 @@
 
 12. **iou_thresh**: 交并比阈值，用于非最大抑制（NMS），以去除重叠较多的冗余框。
 
-13. **detections_per_im**: 每帧的最大检测数。
+13. **detections_per_im**: 每张图像的最大检测次数。
 
 14. **use_darknet_layer**: 一个布尔值，指定是否使用YOLO的Darknet层次结构。
 
