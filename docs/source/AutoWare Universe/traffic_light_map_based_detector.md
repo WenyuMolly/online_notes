@@ -27,7 +27,7 @@
 
 # 三、回调函数
 
-- 1. "input/vector_map" - MapBasedDetector::mapCallback
+- **1. "input/vector_map" - MapBasedDetector::mapCallback**
 
     <p align="center">
     <img src="https://user-images.githubusercontent.com/66779478/281627297-a30a19eb-e486-499a-986e-f72e2e553424.png">
@@ -39,7 +39,7 @@
   d. 所有找到的车道和交通灯都被存储在all_lanelets和all_lanelet_traffic_lights中。
   e. 对于找到的每个交通灯，检查每个交通灯是否是线段（LineString）。如果不是，那么将跳过并继续检查下一个交通灯。
 
-- 2. "input/camera_info" - MapBasedDetector::cameraInfoCallback
+- **2. "input/camera_info" - MapBasedDetector::cameraInfoCallback**
 
     <p align="center">
     <img src="https://user-images.githubusercontent.com/66779478/281631343-004ea80c-95ac-44cd-a7ed-1d8ad7e98f7f.png">
@@ -53,7 +53,7 @@
   b. visible_traffic_lights : for each traffic light in map check if in range and in view angle of camera
   c. Get the ROI from the lanelet and the intrinsic matrix of camera to determine where it appears in image.
 
-- 3. "input/route" - MapBasedDetector::routeCallback
+- **3. "input/route" - MapBasedDetector::routeCallback**
 
     <p align="center">
     <img src="https://user-images.githubusercontent.com/66779478/281726687-b148fbef-fdd2-46a1-bdc0-a9c4a0fb3eb2.png">
