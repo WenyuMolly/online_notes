@@ -5,8 +5,8 @@ Welcome to Wenyu's Online Notes
    :maxdepth: 1
    :caption: AutoWare Universe Perception
 
-   AutoWare Universe/Universe_Perc_Trt.md
-
+   AutoWare Universe/tensorrt_yolo.md
+   AutoWare Universe/traffic_light_map_based_detector.md
 
 .. toctree::
    :maxdepth: 1

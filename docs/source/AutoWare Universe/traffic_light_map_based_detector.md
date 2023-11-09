@@ -3,60 +3,53 @@
 # 一、收发topic
 
 1. **该节点订阅topic**
-    - "in/image"
+    - "input/vector_map" - HD map
+    - "input/camera_info" -相机内参等，用于初始化针孔摄像机模型以及后面生成camera pose
+    - "input/route" -规划路线，如果有就只判断这个路线上的红绿灯，若无就判断所有的红绿灯
     <p align="center">
-    <img src="https://user-images.githubusercontent.com/66779478/280273209-b3041787-91c6-4324-8358-4c21b40eb76c.png">
+    <img src="https://user-images.githubusercontent.com/66779478/281624546-52fd35aa-ad72-4339-8b68-123ff4feeeb7.png">
     </p>   
     
 2. **该节点发出去的topic**
-    - "out/image" -可视化
-    - "out/objects" -模型推理结果
+    - "output/rois" -红绿灯的roi
+    - "debug/markers" -用于debug的图片
     <p align="center">
-    <img src="https://user-images.githubusercontent.com/66779478/280275361-155fc03e-cab3-4630-80e7-959aa3aa998e.png">
+    <img src="https://user-images.githubusercontent.com/66779478/281624853-ff69a8f4-43c2-430f-8a68-98759c6fe203.png">
     </p> 
 
-# 二、节点初始化的参数
+# 二、参数
 
-- 有以下一堆参数
+- 只有vibration参数，用于计算从map到camera的tf，以及roi
     <p align="center">
-    <img src="https://user-images.githubusercontent.com/66779478/280290067-7cff3015-a3ed-46d0-bb72-6d048d4d591b.png">
+    <img src="https://user-images.githubusercontent.com/66779478/281625231-2102fae0-5cbb-40a5-89c7-6ff2a8407b67.png">
     </p> 
 
-1. **onnx_file**: 这是YOLO模型的ONNX文件路径。ONNX是一个开放格式，用于存储训练好的深度学习模型，可以跨多种框架使用。这里的路径是模型文件的位置，TensorRT可以使用这个文件来构建优化后的推理引擎。
-
-2. **engine_file**: 这是TensorRT引擎文件路径。如果已经有了优化后的TensorRT引擎文件，就可以直接加载这个文件，避免重复从ONNX模型构建引擎，节省时间。
-
-3. **label_file**: 标签文件的路径，这个文件包含了类别标签，用于将模型输出的索引映射到实际的物体类别名称。
-
-4. **calib_image_directory**: 用于INT8量化校准的图像目录。当使用INT8模式时，需要这些图像来优化模型以在推理时减少精度损失。
-
-5. **calib_cache_file**: 校准缓存文件的路径，这是TensorRT在执行INT8校准时使用的文件，存储了校准数据，用以加速后续的校准过程。
-
-6. **mode**: 这是运行模式，通常为"FP32", "FP16", 或 "INT8"，指定TensorRT优化后的引擎应该使用的精度。FP32是单精度浮点数，FP16是半精度浮点数，而INT8是8位整数。
-
-7. **gpu_id**: 指定用于推理的GPU设备ID。如果有多个GPU，可以通过这个参数指定哪个GPU用于运算。
-
-8. **num_anchors**: YOLO模型使用的锚点数量。锚点是预定义的框，用于检测过程中的边界框。
-
-9. **anchors**: 锚点的尺寸，是一个浮点数的向量，表示每个锚点的宽度和高度。
-
-10. **scale_x_y**: YOLO v4模型中一个新特性的缩放因子，用于改变锚点预测的框。
-
-11. **score_thresh**: 得分阈值，用于过滤掉得分较低的预测，降低假阳性。
-
-12. **iou_thresh**: 交并比阈值，用于非最大抑制（NMS），以去除重叠较多的冗余框。
-
-13. **detections_per_im**: 每张图像的最大检测次数。
-
-14. **use_darknet_layer**: 一个布尔值，指定是否使用YOLO的Darknet层次结构。
-
-15. **ignore_thresh**: 忽略阈值，用于过滤YOLO模型中的某些预测。
 
 # 三、回调函数
 
+- 1. "input/vector_map" - MapBasedDetector::mapCallback
 
+    <p align="center">
+    <img src="https://user-images.githubusercontent.com/66779478/281627297-a30a19eb-e486-499a-986e-f72e2e553424.png">
+    </p> 
+  a. 输入消息（input_msg）中，首先创建一个新的Lanelet地图（lanelet_map_ptr_）。 
+  b. 使用fromBinMsg函数从输入消息中解析出地图数据，并将其存储在lanelet_map_ptr_中。
+  c. 查询地图中的所有车道（lanelets）和交通灯（traffic lights）。
+  d. 所有找到的车道和交通灯都被存储在all_lanelets和all_lanelet_traffic_lights中。
+  e. 对于找到的每个交通灯，检查每个交通灯是否是线段（LineString）。如果不是，那么将跳过并继续检查下一个交通灯。
+
+- 2. "input/camera_info" - MapBasedDetector::cameraInfoCallback
+
+    <p align="center">
+    <img src="https://user-images.githubusercontent.com/66779478/281631343-004ea80c-95ac-44cd-a7ed-1d8ad7e98f7f.png">
+    </p> 
+  a. 输入消息（input_msg）中，首先创建一个新的Lanelet地图（lanelet_map_ptr_）。 
+  b. 使用fromBinMsg函数从输入消息中解析出地图数据，并将其存储在lanelet_map_ptr_中。
+  c. 查询地图中的所有车道（lanelets）和交通灯（traffic lights）。
+  d. 所有找到的车道和交通灯都被存储在all_lanelets和all_lanelet_traffic_lights中。
+  e. 对于找到的每个交通灯，检查每个交通灯是否是线段（LineString）。如果不是，那么将跳过并继续检查下一个交通灯。
 
 
 # 四、问题
 
-1. calib_image_directory是用于INT8量化校准的图像目录。当使用FP32模式时，还需要这个量化校准的图像吗？
+1. vibration这个参数怎么确定
