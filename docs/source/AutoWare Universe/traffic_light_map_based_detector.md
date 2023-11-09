@@ -33,7 +33,7 @@
     <img src="https://user-images.githubusercontent.com/66779478/281627297-a30a19eb-e486-499a-986e-f72e2e553424.png">
     </p> 
 
-  a. 输入消息（input_msg）中，首先创建一个新的Lanelet地图（lanelet_map_ptr_）。 
+  a. 用输入的input_msg，创建一个新的Lanelet地图（lanelet_map_ptr_）。 
   b. 使用fromBinMsg函数从输入消息中解析出地图数据，并将其存储在lanelet_map_ptr_中。
   c. 查询地图中的所有车道（lanelets）和交通灯（traffic lights）。
   d. 所有找到的车道和交通灯都被存储在all_lanelets和all_lanelet_traffic_lights中。
