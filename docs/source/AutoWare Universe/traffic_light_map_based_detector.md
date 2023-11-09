@@ -32,6 +32,7 @@
     <p align="center">
     <img src="https://user-images.githubusercontent.com/66779478/281627297-a30a19eb-e486-499a-986e-f72e2e553424.png">
     </p> 
+
   a. 输入消息（input_msg）中，首先创建一个新的Lanelet地图（lanelet_map_ptr_）。 
   b. 使用fromBinMsg函数从输入消息中解析出地图数据，并将其存储在lanelet_map_ptr_中。
   c. 查询地图中的所有车道（lanelets）和交通灯（traffic lights）。
@@ -43,12 +44,27 @@
     <p align="center">
     <img src="https://user-images.githubusercontent.com/66779478/281631343-004ea80c-95ac-44cd-a7ed-1d8ad7e98f7f.png">
     </p> 
-  a. 输入消息（input_msg）中，首先创建一个新的Lanelet地图（lanelet_map_ptr_）。 
-  b. 使用fromBinMsg函数从输入消息中解析出地图数据，并将其存储在lanelet_map_ptr_中。
-  c. 查询地图中的所有车道（lanelets）和交通灯（traffic lights）。
-  d. 所有找到的车道和交通灯都被存储在all_lanelets和all_lanelet_traffic_lights中。
-  e. 对于找到的每个交通灯，检查每个交通灯是否是线段（LineString）。如果不是，那么将跳过并继续检查下一个交通灯。
 
+    <p align="center">
+    <img src="https://user-images.githubusercontent.com/66779478/281723068-304ac7a3-728d-4936-8981-5d929ce80d2d.png">
+    </p> 
+
+  a. get transform from map frame to camera frame。 
+  b. visible_traffic_lights : for each traffic light in map check if in range and in view angle of camera
+  c. Get the ROI from the lanelet and the intrinsic matrix of camera to determine where it appears in image.
+
+- 3. "input/route" - MapBasedDetector::routeCallback
+
+    <p align="center">
+    <img src="https://user-images.githubusercontent.com/66779478/281726687-b148fbef-fdd2-46a1-bdc0-a9c4a0fb3eb2.png">
+    </p> 
+
+  a. 检查是否接收到地图（lanelet_map_ptr_）。如果没有接收到地图，将发出一个警告并返回。
+  b. 从输入消息的各个段和原语中提取出路线车道（route_lanelets）。
+  c. 对于每个段中的每个原语，它尝试从地图中获取对应的车道。如果找不到对应的原语，将发出一个错误并返回。
+  d. 查询出路线车道中的所有交通灯（route_lanelet_traffic_lights）。
+  e. 对于每个交通灯，检查其是否为LineString类型（isLineString()）。如果不是，将跳过并继续下一个交通灯。
+  f. 对于每个是LineString类型的交通灯，将这个交通灯加入到路线交通灯集合（route_traffic_lights_ptr_）中。
 
 # 四、问题
 
