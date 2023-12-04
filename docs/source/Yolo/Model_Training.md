@@ -22,7 +22,13 @@
     lspci | grep VGA
     ```
     - NVIDIA 后面会跟着ID，可以去nvidia官网查ID对应的显卡型号 
+    
+    如果已经装了显卡驱动，用下面的命令更便捷
 
+    ```bash
+    nvidia-smi -L
+    ```
+    
 2. **安装CUDA**
 
 
